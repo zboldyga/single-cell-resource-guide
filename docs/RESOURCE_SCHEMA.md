@@ -1,6 +1,6 @@
 # Resource schema and maintenance checks
 
-`data/resources.yaml` is the authoritative catalog. JSON is accepted for fixtures and exchange. The root is an object, not a list. `schema/resources.schema.json` uses JSON Schema 2020-12; `scripts/validate.py` adds semantic checks. All fields below are required, even when their value is unknown. Extra properties are rejected.
+`data/resources.yaml` is the authoritative catalog. JSON is accepted for fixtures and exchange. The root is an object, not a list. `schema/resources.schema.json` uses JSON Schema 2020-12; `scripts/validate.py` adds semantic checks. All fields below are required, even when their value is unknown, except the explicitly optional download examples. Extra properties are rejected.
 
 ## Root and resource fields
 
@@ -25,6 +25,7 @@
 | `scale` | Object: `summary` text, `as_of` date or null, `source_url` HTTP(S) URL or null. Record approximate numbers with their date and evidence; use `unknown` when not established. |
 | `release` | Object: `label` text, `date` date or null, `source_url` URL or null, `note` text. Refers to substantive data release, never a page-edit timestamp. A known version with unknown date can retain its label and a null date. |
 | `access` | Object with required `web`, `api`, and `bulk` objects. Each has `status`, `url`, and `note`. Status is `yes`, `no`, `unknown`, or `not_applicable`; `yes` requires an HTTP(S) URL. |
+| `download_examples` | Optional array of 1–3 curated Bash examples. Each requires `label`, `description`, `command`, a nonempty `requirements` string array, official `source_url`, and `checked_on` date. Omit when a reliable standalone workflow is not verified. |
 | `licensing` | Object: `summary` describing known licensing/access restrictions and `source_url` URL or null. `unknown` is preferable to an invented permission claim. |
 | `not_for` | Short, concrete limitation or non-use case. |
 | `sources` | Nonempty array of source records: `url`, `title`, `type` (`official` or `paper`), `checked_on` date, and nonempty `supports` array of field paths such as `purpose`, `biological_scope`, `access.bulk`, `release`. |
@@ -42,6 +43,10 @@ A verified entry has a nonnull `verification.checked_on` and official source evi
 Summaries should explain what changes a researcher's choice: how samples connect across donors or assays, which readouts accompany perturbations, whether values are measured or inferred, and which subcollections have narrower coverage. For example, GTEx's donor-linked tissue collection and its separate single-nucleus subset both belong in the visible row; the subset must not be presented as covering the whole cohort. Keep modality labels consistent across resources, with methodological detail in `key_data`. A model-assisted summary still requires supporting sources; model confidence is not verification.
 
 ## Commands
+
+Download examples are displayed as plain text and copied to the clipboard; the site never executes them. Describe exactly what each retrieves (one file, one record, a shard, or a complete archive), its release/species scope, prerequisites, authentication, and any manual file selection. Use documented direct file URLs or documented provider tools. A landing page must never be substituted for a data URL. Keep credentials out of examples, explain mutable latest-release targets, and avoid defaulting to unnecessarily large transfers. Portal-only workflows belong in `access.bulk.note`.
+
+Check each example with `bash -n` without executing it. Verify official documentation and, where practical, HTTP headers or a bounded response; these checks do not establish that a complete large transfer will succeed. Link checks cover provenance URLs, while download-specific dates appear separately in the stale report. Recheck literal file URLs and provider CLI syntax when reviewing examples.
 
 Install dependencies into an environment of your choice:
 

@@ -51,50 +51,192 @@
     for (const [key, label] of [["web", "web access"], ["api", "API"], ["bulk", "bulk access"]]) if (!resource.access?.[key] || resource.access[key].status === "unknown") items.push(label);
     return items;
   }
+  function detailDisclosure(title, description) {
+    const disclosure = el("details", "detail-disclosure");
+    const summary = el("summary");
+    const heading = el("span", "disclosure-heading", title);
+    heading.append(el("span", "disclosure-description", description));
+    summary.append(heading);
+    const content = el("div", "disclosure-content");
+    disclosure.append(summary, content);
+    return { disclosure, content };
+  }
+  function selectCommand(code) {
+    code.parentElement.focus();
+    const selection = window.getSelection();
+    if (!selection) return false;
+    const range = document.createRange();
+    range.selectNodeContents(code);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    return true;
+  }
+  function legacyCopy(command, button) {
+    const input = el("textarea", "clipboard-buffer");
+    input.value = command;
+    input.readOnly = true;
+    input.setAttribute("aria-label", "Download command");
+    document.body.append(input);
+    input.select();
+    input.setSelectionRange(0, command.length);
+    let copied = false;
+    try { copied = document.execCommand("copy"); } catch { /* Manual selection remains available. */ }
+    input.remove();
+    button.focus({ preventScroll: true });
+    return copied;
+  }
+  function downloadExample(example, id) {
+    const card = el("article", "download-example");
+    const heading = el("h5", "", value(example.label));
+    heading.id = id + "-title";
+    card.setAttribute("aria-labelledby", heading.id);
+    card.append(heading);
+    if (example.description) paragraph(card, example.description, "download-description");
+    if (list(example.requirements).length) {
+      const requirements = el("div", "download-requirements");
+      requirements.append(el("strong", "", "Before you run"));
+      const items = el("ul");
+      example.requirements.forEach((item) => items.append(el("li", "", item)));
+      requirements.append(items);
+      card.append(requirements);
+    }
+    const terminal = el("div", "command-terminal");
+    const toolbar = el("div", "command-toolbar");
+    toolbar.append(el("span", "command-language", "Bash"));
+    const copy = el("button", "copy-command", "Copy command");
+    copy.type = "button";
+    copy.setAttribute("aria-label", "Copy Bash command: " + value(example.label));
+    copy.setAttribute("aria-describedby", id + "-feedback");
+    toolbar.append(copy);
+    const pre = el("pre", "command-code");
+    pre.tabIndex = 0;
+    pre.setAttribute("aria-label", "Bash command for " + value(example.label));
+    const code = el("code", "", example.command);
+    pre.append(code);
+    const feedback = el("p", "copy-feedback");
+    feedback.id = id + "-feedback";
+    feedback.setAttribute("role", "status");
+    feedback.setAttribute("aria-live", "polite");
+    feedback.setAttribute("aria-atomic", "true");
+    copy.addEventListener("click", async () => {
+      copy.disabled = true;
+      let copied = false;
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(example.command);
+          copied = true;
+        }
+      } catch { /* Try the local-file / denied-permission fallback below. */ }
+      if (!copied) copied = legacyCopy(example.command, copy);
+      copy.disabled = false;
+      if (copied) {
+        copy.focus({ preventScroll: true });
+        copy.textContent = "Copied";
+        feedback.textContent = "Command copied to clipboard.";
+      } else {
+        copy.textContent = "Copy command";
+        feedback.textContent = selectCommand(code)
+          ? "Command selected. Press Ctrl+C (Windows/Linux) or ⌘C (Mac) to copy."
+          : "Clipboard unavailable. Select the command above and copy it manually.";
+      }
+    });
+    terminal.append(toolbar, pre);
+    card.append(terminal, feedback);
+    const provenance = el("p", "download-provenance");
+    provenance.append(sourceLink(example.source_url, "Official download instructions"), el("span", "", "Checked " + date(example.checked_on)));
+    card.append(provenance);
+    return card;
+  }
   function makeDetails(resource, panelId) {
     const panel = el("div", "detail-panel");
     panel.id = panelId;
-    const title = el("h3", "", resource.name + " · access & evidence");
+    const header = el("div", "detail-header");
+    const heading = el("div");
+    paragraph(heading, resource.name, "detail-eyebrow");
+    const title = el("h3", "", "Access & downloads");
     title.id = panelId + "-title";
-    panel.setAttribute("role", "region"); panel.setAttribute("aria-labelledby", title.id); panel.append(title);
-    const grid = el("div", "detail-grid");
+    heading.append(title);
+    paragraph(heading, "Choose an access route, then explore the dataset and its sources.", "detail-introduction");
+    const verified = resource.verification?.status === "verified";
+    const badge = el("span", "detail-verification " + (verified ? "is-verified" : "is-provisional"), verified ? "Core details source-checked" : "Provisional · needs checking");
+    badge.append(el("span", "", "Checked " + date(resource.verification?.checked_on)));
+    header.append(heading, badge);
+    panel.setAttribute("role", "region");
+    panel.setAttribute("aria-labelledby", title.id);
+    panel.append(header);
+    const accessGrid = el("div", "access-cards");
+    for (const [key, label, action] of [["web", "Browse online", "Open website"], ["api", "API / programmatic", "View API / documentation"], ["bulk", "Download files", "Open downloads"]]) {
+      const method = resource.access?.[key] || { status: "unknown", note: "Not verified" };
+      const card = el("section", "access-card");
+      const cardHeader = el("div", "access-card-header");
+      cardHeader.append(el("h4", "", label));
+      const status = Object.hasOwn(statusLabels, method.status) ? method.status : "unknown";
+      cardHeader.append(el("span", "access-state access-" + status, statusLabels[status]));
+      card.append(cardHeader);
+      paragraph(card, method.note || (status === "unknown" ? "This access route has not been verified." : "No additional access notes recorded."), "access-note");
+      if (safeURL(method.url)) card.append(link(action + " ↗", method.url, "access-action"));
+      accessGrid.append(card);
+    }
+    panel.append(accessGrid);
+    const licensing = el("aside", "licensing-note");
+    licensing.append(el("h4", "", "Licensing & access restrictions"));
+    paragraph(licensing, value(resource.licensing?.summary));
+    if (safeURL(resource.licensing?.source_url)) licensing.append(sourceLink(resource.licensing.source_url, "Read licensing / access terms ↗"));
+    panel.append(licensing);
+    const downloads = el("section", "download-section");
+    downloads.append(el("h4", "", "Download from your terminal"));
+    const examples = list(resource.download_examples).filter((example) => example && typeof example.command === "string" && example.command.trim());
+    if (examples.length) {
+      paragraph(downloads, "Copy an example below. Check its scope and requirements before running it locally.", "detail-meta");
+      examples.forEach((example, index) => downloads.append(downloadExample(example, panelId + "-download-" + index)));
+    } else {
+      const empty = el("div", "download-empty");
+      paragraph(empty, "No verified Bash example is included for this resource.");
+      paragraph(empty, "Follow the download instructions above to select files, sign in, or generate a command for your selection.", "detail-meta");
+      if (safeURL(resource.access?.bulk?.url)) empty.append(link("Choose files on the official download page ↗", resource.access.bulk.url));
+      downloads.append(empty);
+    }
+    panel.append(downloads);
+    const dataset = detailDisclosure("Dataset & release details", "Biological scope, data types, scale and release history");
+    const metadataGrid = el("div", "metadata-grid");
     const scope = block("Biological scope");
     paragraph(scope, value(resource.biological_scope));
     definition(scope, "Species", list(resource.species).join(" · "));
     definition(scope, "Granularity", list(resource.granularity).join(" · "));
     definition(scope, "Categories", list(resource.categories).join(" · "));
-    definition(scope, "Data types", list(resource.modalities).join(" · "));
     definition(scope, "Maintainer", resource.maintainer);
     definition(scope, "Resource type", typeLabels[resource.resource_type] || "Unknown");
+    const modalities = el("div", "modality-group");
+    modalities.append(el("h5", "", "Data types"));
+    const chips = el("ul", "detail-chips");
+    for (const modality of list(resource.modalities)) chips.append(el("li", "", modality));
+    if (chips.children.length) modalities.append(chips); else paragraph(modalities, "Unknown");
+    scope.append(modalities);
     const scale = block("Scale & substantive release");
     definition(scale, "Approximate scale", resource.scale?.summary);
     paragraph(scale, "Scale source date: " + date(resource.scale?.as_of), "detail-meta");
-    if (safeURL(resource.scale?.source_url)) scale.append(sourceLink(resource.scale.source_url, "Scale evidence"));
+    if (safeURL(resource.scale?.source_url)) scale.append(sourceLink(resource.scale.source_url, "Scale evidence ↗"));
     definition(scale, "Substantive data release", resource.release?.label);
     paragraph(scale, "Release date: " + date(resource.release?.date), "detail-meta");
     if (resource.release?.note) paragraph(scale, resource.release.note);
-    if (safeURL(resource.release?.source_url)) scale.append(sourceLink(resource.release.source_url, "Release evidence"));
+    if (safeURL(resource.release?.source_url)) scale.append(sourceLink(resource.release.source_url, "Release evidence ↗"));
     paragraph(scale, "A website update is not a data release.", "detail-meta");
-    const access = block("Access & restrictions");
-    for (const [key, label] of [["web", "Web browser"], ["api", "API"], ["bulk", "Bulk download"]]) {
-      const method = resource.access?.[key] || { status: "unknown", note: "Not verified" };
-      const p = el("p", "access-line");
-      p.append(link(label, method.url), el("span", "access-state", statusLabels[method.status] || "Unknown"));
-      access.append(p);
-      if (method.note) paragraph(access, method.note, "detail-meta");
-    }
-    definition(access, "Licensing & access restrictions", resource.licensing?.summary);
-    if (safeURL(resource.licensing?.source_url)) access.append(sourceLink(resource.licensing.source_url, "Licensing evidence"));
-    const evidence = block("Cited sources"); evidence.classList.add("detail-wide");
-    const sources = el("ul");
+    metadataGrid.append(scope, scale);
+    dataset.content.append(metadataGrid);
+    const evidence = detailDisclosure("Sources & verification", "Official references, known gaps and related resources");
+    const evidenceGrid = el("div", "metadata-grid evidence-grid");
+    const citations = block("Cited sources");
+    const sources = el("ol", "source-list");
     for (const source of list(resource.sources)) {
-      const li = el("li"); li.append(sourceLink(source.url, value(source.title)));
+      const li = el("li");
+      li.append(sourceLink(source.url, value(source.title)));
       li.append(el("span", "source-supports", (source.type === "official" ? "Official source" : "Research paper") + " · checked " + date(source.checked_on)));
-      li.append(el("span", "source-supports", "Supports: " + (humanFields(source.supports) || "Not specified"))); sources.append(li);
+      li.append(el("span", "source-supports", "Supports: " + (humanFields(source.supports) || "Not specified")));
+      sources.append(li);
     }
-    if (sources.children.length) evidence.append(sources); else paragraph(evidence, "No sources recorded.");
+    if (sources.children.length) citations.append(sources); else paragraph(citations, "No sources recorded.");
     const verification = block("Verification & related resources");
-    paragraph(verification, resource.verification?.status === "verified" ? "Core details checked against official sources" : "Provisional · core details need verification");
+    paragraph(verification, verified ? "Core details checked against official sources" : "Provisional · core details need verification");
     paragraph(verification, "Checked: " + date(resource.verification?.checked_on), "detail-meta");
     paragraph(verification, value(resource.verification?.note));
     const missing = uncertainty(resource);
@@ -102,12 +244,17 @@
     paragraph(verification, "This status does not establish complete metadata, current data, or unrestricted reuse.", "detail-meta");
     const related = list(resource.related).map((id) => byId.get(id)).filter(Boolean);
     if (related.length) {
-      definition(verification, "Related resources", "");
-      const links = el("p", "related-links");
-      for (const relatedResource of related) links.append(link(relatedResource.name, relatedResource.url));
-      verification.lastElementChild.lastElementChild.replaceChildren(links);
+      const relatedGroup = el("div", "related-group");
+      relatedGroup.append(el("h5", "", "Related resources"));
+      const links = el("div", "related-links");
+      for (const relatedResource of related) links.append(link(relatedResource.name + " ↗", relatedResource.url));
+      relatedGroup.append(links);
+      verification.append(relatedGroup);
     } else paragraph(verification, "No related resources listed.", "detail-meta");
-    grid.append(scope, scale, access, evidence, verification); panel.append(grid); return panel;
+    evidenceGrid.append(citations, verification);
+    evidence.content.append(evidenceGrid);
+    panel.append(dataset.disclosure, evidence.disclosure);
+    return panel;
   }
   function renderRow(resource, index) {
     const row = el("tr", "resource-row");
@@ -119,7 +266,7 @@
     paragraph(nameCell, list(resource.categories).join(" · "), "resource-categories");
     if (resource.verification?.status !== "verified") nameCell.append(el("span", "verification-label provisional", "Provisional"));
     const detailsRow = el("tr", "details-row"); const detailsCell = el("td"); detailsCell.colSpan = 4;
-    const panelId = "resource-detail-" + index;
+    const panelId = "resource-detail-" + resource.id;
     detailsRow.hidden = !state.expanded.has(resource.id);
     const toggle = el("button", "detail-toggle", detailsRow.hidden ? "Access & details +" : "Close details −");
     toggle.type = "button"; toggle.setAttribute("aria-expanded", String(!detailsRow.hidden)); toggle.setAttribute("aria-controls", panelId);

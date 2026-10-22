@@ -20,6 +20,10 @@ def make_report(catalog, as_of, check_days=180, release_days=730):
         check_age = age(verification["checked_on"], as_of)
         source_ages = [{"url": source["url"], "checked_on": source["checked_on"],
                         "age_days": age(source["checked_on"], as_of)} for source in resource["sources"]]
+        download_ages = [{"label": example["label"], "url": example["source_url"],
+                          "checked_on": example["checked_on"],
+                          "age_days": age(example["checked_on"], as_of)}
+                         for example in resource.get("download_examples", [])]
         release = resource["release"]
         release_age = age(release["date"], as_of)
         rows.append({"id": resource["id"], "name": resource["name"],
@@ -27,6 +31,8 @@ def make_report(catalog, as_of, check_days=180, release_days=730):
                      "verification_checked_on": verification["checked_on"], "check_age_days": check_age,
                      "check_state": "unknown" if check_age is None else "review_due" if check_age > check_days else "recent",
                      "source_checks": source_ages,
+                     "download_checks": download_ages,
+                     "download_review_due": any(d["age_days"] > check_days for d in download_ages),
                      "oldest_source_check_age_days": max(s["age_days"] for s in source_ages),
                      "source_review_due": any(s["age_days"] > check_days for s in source_ages),
                      "release_label": release["label"], "release_date": release["date"],
@@ -44,6 +50,7 @@ def make_report(catalog, as_of, check_days=180, release_days=730):
                        "checks_review_due": sum(r["check_state"] == "review_due" for r in rows),
                        "checks_unknown": sum(r["check_state"] == "unknown" for r in rows),
                        "source_reviews_due": sum(r["source_review_due"] for r in rows),
+                       "download_reviews_due": sum(r["download_review_due"] for r in rows),
                        "release_dates_unknown": sum(r["release_state"] == "unknown" for r in rows),
                        "older_releases": sum(r["release_state"] == "older_release" for r in rows)},
             "resources": rows}

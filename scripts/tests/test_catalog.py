@@ -111,6 +111,32 @@ class CatalogTests(unittest.TestCase):
         self.resource["release"]["date"] = None
         self.assertEqual("unknown", make_report(self.catalog, date(2026, 10, 21))["resources"][0]["release_state"])
 
+    def test_download_examples_require_dated_provenance(self):
+        example = {"label": "One file", "description": "A selected public file.",
+                   "command": "curl --fail --location \\\n  --output example.tsv 'https://example.org/data.tsv'",
+                   "requirements": ["curl"], "source_url": "https://example.org/downloads",
+                   "checked_on": "2026-10-21"}
+        self.resource["download_examples"] = [example]
+        self.assertEqual([], self.errors())
+        self.assertIn(example["source_url"], collect_urls(self.catalog))
+        for change in ({"source_url": "javascript:alert(1)"}, {"checked_on": "2026-10-22"},
+                       {"requirements": []}, {"command": ""}):
+            with self.subTest(change=change):
+                self.resource["download_examples"] = [dict(example, **change)]
+                self.assertTrue(self.errors())
+        self.resource["download_examples"] = [dict(example)]
+        del self.resource["download_examples"][0]["source_url"]
+        self.assertTrue(self.errors())
+
+    def test_download_check_age_independent_of_core_verification(self):
+        self.resource["verification"]["checked_on"] = "2026-10-21"
+        self.resource["download_examples"] = [{"label": "Old example", "source_url": "https://example.org",
+                                               "checked_on": "2020-01-01"}]
+        report = make_report(self.catalog, date(2026, 10, 21))
+        self.assertEqual("recent", report["resources"][0]["check_state"])
+        self.assertTrue(report["resources"][0]["download_review_due"])
+        self.assertEqual(1, report["counts"]["download_reviews_due"])
+
 
 if __name__ == "__main__":
     unittest.main()

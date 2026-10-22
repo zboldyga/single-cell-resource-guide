@@ -59,6 +59,20 @@ window.RESOURCE_CATALOG = {
           "note": "Proteome and selected collaborator archives; individual predictions downloadable from structure pages."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download one selected structure",
+          "description": "Open an AlphaFold DB structure entry and copy its mmCIF download link. This downloads that one prediction, rather than an entire species proteome or complex collection.",
+          "command": "(\n  set -e\n  read -r -p 'Paste the structure\u2019s mmCIF file download URL: ' alphafold_cif_url\n  curl --fail --location --retry 3 --proto '=https' --proto-redir '=https' --output selected-model.cif \"$alphafold_cif_url\"\n)",
+          "requirements": [
+            "Bash and curl.",
+            "Select an individual model\u2019s mmCIF file link; do not paste the entry page URL.",
+            "Use a fresh working directory and retain the entry identifier/version plus confidence data when interpreting the model."
+          ],
+          "source_url": "https://alphafold.ebi.ac.uk/download",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "CC BY 4.0 for downloadable data; cite the relevant prediction dataset.",
         "source_url": "https://alphafold.ebi.ac.uk/download"
@@ -194,6 +208,18 @@ window.RESOURCE_CATALOG = {
           "note": "Complete and organism-specific interaction files; use current formats."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download the latest all-organism interaction table",
+          "description": "Downloads the complete BioGRID interaction archive in TAB3 format for all included organisms. This can be substantially larger than a species-specific selection; the LATEST target changes each release.",
+          "command": "curl --fail --location --retry 3 \\\n  --output BIOGRID-ALL-LATEST.tab3.zip \\\n  https://downloads.thebiogrid.org/Download/BioGRID/Latest-Release/BIOGRID-ALL-LATEST.tab3.zip",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://downloads.thebiogrid.org/BioGRID/Latest-Release/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "MIT License for downloadable BioGRID data.",
         "source_url": "https://downloads.thebiogrid.org/BioGRID/Latest-Release/"
@@ -318,6 +344,18 @@ window.RESOURCE_CATALOG = {
           "note": "Versioned ontology release files; main products include OWL/OBO/JSON."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download the Cell Ontology",
+          "description": "Downloads the current Cell Ontology in OWL format. This is the cell-type vocabulary, not a cell-expression reference; OWL tools may separately resolve imported ontologies.",
+          "command": "curl --fail --location --retry 3 \\\n  --output cl.owl \\\n  https://purl.obolibrary.org/obo/cl.owl",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://obophenotype.github.io/cell-ontology/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "CC BY 4.0.",
         "source_url": "https://obofoundry.org/ontology/cl.html"
@@ -449,6 +487,18 @@ window.RESOURCE_CATALOG = {
           "note": "Database dumps plus structure and sequence files"
         }
       },
+      "download_examples": [
+        {
+          "label": "Download a selected ChEMBL release file",
+          "description": "Choose a release file from the official directory, then paste its HTTPS link. SQLite, PostgreSQL, and MySQL archives contain the database; SDF and FASTA exports have narrower contents. Review the size before selecting a full database archive.",
+          "command": "(\n  read -r -p 'Paste the direct HTTPS file URL: ' download_url &&\n  curl --fail --location --retry 3 --proto '=https' --proto-redir '=https' \\\n    --remote-name \"$download_url\"\n)",
+          "requirements": [
+            "Bash and curl. Copy an individual file link, not a web page or directory. Use a fresh working directory with enough free space for your selection."
+          ],
+          "source_url": "https://chembl.gitbook.io/chembl-interface-documentation/downloads",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "Database provided under CC BY-SA 3.0.",
         "source_url": "https://www.ebi.ac.uk/chembl/"
@@ -562,6 +612,18 @@ window.RESOURCE_CATALOG = {
           "note": "Complete public XML; TSV summaries and more limited VCF exports"
         }
       },
+      "download_examples": [
+        {
+          "label": "Download the ClinVar variant summary",
+          "description": "Downloads the current compressed tab-separated variant summary. This summary does not preserve every detail of individual submissions available in the full XML releases.",
+          "command": "curl --fail --location --retry 3 \\\n  --output variant_summary.txt.gz \\\n  https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://www.ncbi.nlm.nih.gov/clinvar/docs/downloads/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "unknown",
         "source_url": null
@@ -671,6 +733,18 @@ window.RESOURCE_CATALOG = {
           "note": "PSI-MI XML and species-level ComplexTab files"
         }
       },
+      "download_examples": [
+        {
+          "label": "Download curated human complexes",
+          "description": "Downloads the current human ComplexTab table (taxon 9606). The separately distributed predicted-human-complex file is not included in this download.",
+          "command": "curl --fail --location --retry 3 \\\n  --output complex-portal-human.tsv \\\n  https://ftp.ebi.ac.uk/pub/databases/intact/complex/current/complextab/9606.tsv",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://ftp.ebi.ac.uk/pub/databases/intact/complex/current/complextab/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "unknown",
         "source_url": null
@@ -785,6 +859,20 @@ window.RESOURCE_CATALOG = {
           "note": "Download annotated h5ad datasets; new Seurat RDS downloads were deprecated, although older files remain accessible."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download a selected AnnData dataset",
+          "description": "In Discover, open the download dialog for a dataset, select h5ad, and copy its permanent download link. This downloads that one complete dataset; review the displayed size first.",
+          "command": "(\n  set -e\n  read -r -p 'Paste the permanent h5ad download link: ' cellxgene_url\n  curl --fail --location --retry 3 --proto '=https' --proto-redir '=https' --output selected-dataset.h5ad \"$cellxgene_url\"\n)",
+          "requirements": [
+            "Bash and curl.",
+            "Copy the h5ad file link from the dataset download dialog, rather than its collection or dataset web-page URL.",
+            "Use a fresh working directory and enough space for the selected dataset."
+          ],
+          "source_url": "https://cellxgene.cziscience.com/docs/03__Download%20Published%20Data",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "unknown",
         "source_url": null
@@ -904,7 +992,7 @@ window.RESOURCE_CATALOG = {
         "bulk": {
           "status": "yes",
           "url": "https://depmap.org/portal/data_page/",
-          "note": "Portal documents release and historical dataset downloads; automated inspection of the download page encountered a human-verification gate."
+          "note": "Choose a release and files in the Downloads portal and review current data-use terms. Automated inspection encountered a human-verification gate; a reliable standalone command was not verified."
         }
       },
       "licensing": {
@@ -1028,6 +1116,19 @@ window.RESOURCE_CATALOG = {
           "note": "Bulk data and metadata downloads are documented"
         }
       },
+      "download_examples": [
+        {
+          "label": "Download one example BED file",
+          "description": "Downloads the BED file ENCFF002CTW used in ENCODE\u2019s own getting-started example. This is an example file, rather than an entire experiment or the latest release.",
+          "command": "curl --fail --location --output ENCFF002CTW.bed.gz \\\n  'https://www.encodeproject.org/files/ENCFF002CTW/@@download/ENCFF002CTW.bed.gz'",
+          "requirements": [
+            "curl.",
+            "Use an empty working directory; select your own experiment\u2019s file download link for a different assay or biosample."
+          ],
+          "source_url": "https://www.encodeproject.org/help/getting-started/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "Released ENCODE data may be downloaded, analyzed and published without use restrictions; follow citation guidance.",
         "source_url": "https://www.encodeproject.org/about/data-use-policy/"
@@ -1166,6 +1267,18 @@ window.RESOURCE_CATALOG = {
           "note": "Current-platform flat files; link documented in official training."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download a selected Ensembl reference file",
+          "description": "Choose a species, assembly, release, and individual FASTA or annotation file from the official downloads directory. Match sequence and annotation versions when building a reference.",
+          "command": "(\n  read -r -p 'Paste the direct HTTPS file URL: ' download_url &&\n  curl --fail --location --retry 3 --proto '=https' --proto-redir '=https' \\\n    --remote-name \"$download_url\"\n)",
+          "requirements": [
+            "Bash and curl. Copy an individual file link, not a web page or directory. Use a fresh working directory with enough free space for your selection."
+          ],
+          "source_url": "https://www.ebi.ac.uk/training/online/courses/ensembl-data-platform/retrieving-ensembl-data/programmatic-data-access-and-bulk-download/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "Ensembl-generated data is available without restriction; integrated third-party material may have separate constraints. Project code uses Apache 2.0.",
         "source_url": "https://www.ensembl.org/about/articles/ensembl-content-disclaimer"
@@ -1298,6 +1411,18 @@ window.RESOURCE_CATALOG = {
           "note": "Human and mouse release files: GTF/GFF3, FASTA and metadata."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download human v50 primary-assembly annotation",
+          "description": "Downloads the comprehensive GENCODE v50 primary-assembly GTF for human GRCh38.p14. Sequence FASTA files and other assembly scopes are separate; match this annotation to your reference genome.",
+          "command": "curl --fail --location --retry 3 \\\n  --output gencode.v50.primary_assembly.annotation.gtf.gz \\\n  https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_50/gencode.v50.primary_assembly.annotation.gtf.gz",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://www.gencodegenes.org/human/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "unknown",
         "source_url": null
@@ -1428,6 +1553,20 @@ window.RESOURCE_CATALOG = {
           "note": "Series files and FTP bulk downloads"
         }
       },
+      "download_examples": [
+        {
+          "label": "Download one selected supplementary file",
+          "description": "Open a GEO Series record, follow its supplementary-files FTP link, and copy one file\u2019s HTTPS URL. The contents and size depend on that study; raw sequencing reads may instead be linked through SRA.",
+          "command": "(\n  set -e\n  read -r -p 'Paste a supplementary file HTTPS URL from GEO FTP: ' geo_url\n  curl --fail --location --retry 3 --proto '=https' --proto-redir '=https' --remote-name \"$geo_url\"\n)",
+          "requirements": [
+            "Bash and curl.",
+            "Select an individual file under https://ftp.ncbi.nlm.nih.gov/geo/; do not paste a Series landing page or directory URL.",
+            "Review the file size and use an empty working directory."
+          ],
+          "source_url": "https://www.ncbi.nlm.nih.gov/geo/info/download.html",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "unknown",
         "source_url": null
@@ -1550,6 +1689,18 @@ window.RESOURCE_CATALOG = {
           "note": "Download annotation files and the matching ontology version."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download the GO basic ontology",
+          "description": "Downloads the current go-basic ontology in OBO format. Gene-to-term annotations are separate downloads; record the ontology version for reproducible enrichment analyses.",
+          "command": "curl --fail --location --retry 3 \\\n  --output go-basic.obo \\\n  https://purl.obolibrary.org/obo/go/go-basic.obo",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://geneontology.org/docs/download-ontology/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "CC BY 4.0 for GO data products; software has separate licenses.",
         "source_url": "https://geneontology.org/docs/go-citation-policy/"
@@ -1674,6 +1825,20 @@ window.RESOURCE_CATALOG = {
           "note": "Variant files and gene-constraint tables"
         }
       },
+      "download_examples": [
+        {
+          "label": "Download a selected constraint table",
+          "description": "On the gnomAD downloads page, choose the desired release and constraint table, then copy its public HTTPS file link. Downloads that table only; genome-wide variant VCFs and Hail tables are separate, much larger products.",
+          "command": "(\n  set -e\n  read -r -p 'Paste the public gnomAD constraint-table HTTPS URL: ' gnomad_url\n  curl --fail --location --retry 3 --proto '=https' --proto-redir '=https' --remote-name \"$gnomad_url\"\n)",
+          "requirements": [
+            "Bash and curl.",
+            "Copy an actual TSV or compressed TSV file URL from the downloads table, rather than a browser or cloud-console page.",
+            "Check the release, compressed/uncompressed size, and analysis semantics; constraint metrics change across releases. Use a fresh working directory."
+          ],
+          "source_url": "https://gnomad.broadinstitute.org/news/2026-03-gnomad-v4-1-1/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "unknown",
         "source_url": null
@@ -1783,6 +1948,20 @@ window.RESOURCE_CATALOG = {
           "note": "Data Transfer Tool for selected files"
         }
       },
+      "download_examples": [
+        {
+          "label": "Download one selected open-access file",
+          "description": "In the GDC Portal, choose an open-access TCGA file, inspect its type and size, and copy its file UUID. This retrieves just that file into gdc-downloads; controlled-access files require a separate authorized workflow.",
+          "command": "(\n  set -e\n  read -r -p 'Public GDC file UUID: ' gdc_file_uuid\n  gdc-client download \"$gdc_file_uuid\" --dir gdc-downloads --no-related-files\n)",
+          "requirements": [
+            "Bash and the GDC Data Transfer Tool (gdc-client) installed from NCI.",
+            "Select an open-access file in the portal; gene-expression count files are a more manageable starting point than raw BAM files.",
+            "Check the selected file size and available disk space before running."
+          ],
+          "source_url": "https://docs.gdc.cancer.gov/Data_Transfer_Tool/Users_Guide/Data_Download_and_Upload/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "Some data are controlled: eRA Commons authentication and dbGaP authorization are required. Dataset reuse terms must be checked.",
         "source_url": "https://gdc.cancer.gov/access-data/obtaining-access-controlled-data"
@@ -1899,6 +2078,20 @@ window.RESOURCE_CATALOG = {
           "note": "Public expression files are downloadable; genotypes and raw RNA sequence require approved dbGaP access, with protected data in AnVIL."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download one selected public GTEx file",
+          "description": "Choose a release and data type on the GTEx open-access downloads page, then copy a specific file\u2019s download link. Use the metadata tab for donor/sample tables, Bulk tissue expression for matrices, or Single cell for the separate nucleus atlas.",
+          "command": "(\n  set -e\n  read -r -p 'Paste one public GTEx file download URL: ' gtex_url\n  curl --fail --location --retry 3 --proto '=https' --proto-redir '=https' --remote-name \"$gtex_url\"\n)",
+          "requirements": [
+            "Bash and curl.",
+            "Copy an actual open-access file URL, rather than the downloads-page URL or a cloud-console link.",
+            "Check release, annotation version, compression format, file size, and free space. Protected sequence/donor data use separate access procedures."
+          ],
+          "source_url": "https://gtexportal.org/home/downloads/adult-gtex/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "unknown",
         "source_url": null
@@ -2080,6 +2273,18 @@ window.RESOURCE_CATALOG = {
           "note": "Complete HGNC datasets and subsets in TSV/JSON."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download the complete HGNC table",
+          "description": "Downloads the current complete HGNC nomenclature set as tab-separated text, including approved symbols and identifier mappings. The latest file changes over time.",
+          "command": "curl --fail --location --retry 3 \\\n  --output hgnc_complete_set.txt \\\n  https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://www.genenames.org/download/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "CC0; attribution recommended.",
         "source_url": "https://hgnc.genenames.org/about/license/"
@@ -2209,6 +2414,20 @@ window.RESOURCE_CATALOG = {
           "note": "Download published open data through portal/Globus or the command-line transfer workflow; raw genetic data require NIH/dbGaP approval."
         }
       },
+      "download_examples": [
+        {
+          "label": "Transfer files from a selected manifest",
+          "description": "Prepare or download a HuBMAP CLT manifest listing only the files you need, then log in and transfer that selection. The manifest contains HuBMAP IDs and file paths; its total data size determines the transfer size.",
+          "command": "(\n  set -e\n  hubmap-clt login && \\\n  read -r -p 'Path to your reviewed HuBMAP manifest: ' hubmap_manifest && \\\n  hubmap-clt transfer \"$hubmap_manifest\"\n)",
+          "requirements": [
+            "Bash, Python 3.9+, atlas-consortia-clt (hubmap-clt), and Globus Connect Personal installed.",
+            "Globus Connect Personal must be running, with its local destination configured. Public downloads still require a supported account login.",
+            "Prepare a manifest in the official format and review selected paths and disk requirements. Default transfers use the configured Globus location; check it in the setup guide."
+          ],
+          "source_url": "https://docs.hubmapconsortium.org/clt/index.html",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "unknown",
         "source_url": null
@@ -2334,7 +2553,7 @@ window.RESOURCE_CATALOG = {
         "bulk": {
           "status": "yes",
           "url": "https://explore.data.humancellatlas.org/export",
-          "note": "Export files with curl commands/manifests or to Terra; controlled projects require DUOS approval and authentication."
+          "note": "Filter the HCA Data Explorer, choose Export, then Download Study Data and Metadata (Curl Command) \u2192 Request curl Command. The portal generates the command for your selected files; the separate TSV metadata manifest does not contain the data itself."
         }
       },
       "licensing": {
@@ -2468,6 +2687,18 @@ window.RESOURCE_CATALOG = {
           "note": "Download resource-specific tables and whole-atlas XML/TSV/JSON exports."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download the gene-level summary table",
+          "description": "Downloads the compressed, tab-separated Human Protein Atlas summary table. This is a gene-level overview; assay-specific expression files and images are separate downloads.",
+          "command": "curl --fail --location --retry 3 \\\n  --output proteinatlas.tsv.zip \\\n  https://www.proteinatlas.org/download/proteinatlas.tsv.zip",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://www.proteinatlas.org/about/download",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "CC BY 4.0 for copyrightable HPA database content; incorporated third-party data can carry additional restrictions.",
         "source_url": "https://www.proteinatlas.org/about/licence"
@@ -2591,6 +2822,18 @@ window.RESOURCE_CATALOG = {
           "note": "Batch motif files in JASPAR, MEME and TRANSFAC formats"
         }
       },
+      "download_examples": [
+        {
+          "label": "Download JASPAR 2026 vertebrate CORE motifs",
+          "description": "Downloads non-redundant vertebrate CORE position-frequency matrices in MEME format. This contains motif models, not genomic binding-site measurements.",
+          "command": "curl --fail --location --retry 3 \\\n  --output JASPAR2026_CORE_vertebrates_non-redundant_pfms_meme.txt \\\n  https://jaspar.elixir.no/download/data/2026/CORE/JASPAR2026_CORE_vertebrates_non-redundant_pfms_meme.txt",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://jaspar.elixir.no/downloads/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "CC BY 4.0.",
         "source_url": "https://jaspar.elixir.no/"
@@ -2695,6 +2938,20 @@ window.RESOURCE_CATALOG = {
           "note": "Official guide links GEO GSE92742 and GSE70138 with GCTx matrices and metadata; direct GEO inspection encountered a browser challenge."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download one public LINCS Phase II file",
+          "description": "NIH-funded LINCS-CMap Phase II files are in GEO Series GSE70138. Choose one supplementary file there; the provider recommends Level 5 for most analyses. Expression matrices and their signature annotations are separate files.",
+          "command": "(\n  set -e\n  read -r -p 'Paste a GSE70138 supplementary file HTTPS URL: ' lincs_url\n  curl --fail --location --retry 3 --proto '=https' --proto-redir '=https' --remote-name \"$lincs_url\"\n)",
+          "requirements": [
+            "Bash and curl.",
+            "Open GSE70138 and use its supplementary-files FTP links to copy an individual https://ftp.ncbi.nlm.nih.gov/geo/series/GSE70nnn/GSE70138/suppl/ file URL.",
+            "Check the file size; a complete Level 5 expression matrix may be large. Use a fresh directory and retain its matching signature/gene metadata."
+          ],
+          "source_url": "https://clue.io/connectopedia/lincs_cmap_data",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "unknown",
         "source_url": null
@@ -2817,7 +3074,7 @@ window.RESOURCE_CATALOG = {
         "bulk": {
           "status": "yes",
           "url": "https://www.gsea-msigdb.org/gsea/downloads.jsp",
-          "note": "Gene-set downloads require free registration and email login."
+          "note": "Register and log in with your email, then select the human or mouse collection and download GMT, JSON, or SQLite files through MSigDB. A supported authenticated Bash download workflow was not verified."
         }
       },
       "licensing": {
@@ -2933,6 +3190,18 @@ window.RESOURCE_CATALOG = {
           "note": "Catalog tables and submitted summary-statistics files"
         }
       },
+      "download_examples": [
+        {
+          "label": "Download the GWAS study table",
+          "description": "Downloads study-level metadata from the latest GWAS Catalog release. Association tables and genome-wide summary statistics are separate products.",
+          "command": "curl --fail --location --retry 3 \\\n  --output gwas-catalog-studies.tsv \\\n  https://ftp.ebi.ac.uk/pub/databases/gwas/releases/latest/gwas-catalog-studies.tsv",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://www.ebi.ac.uk/gwas/docs/file-downloads/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "EMBL-EBI terms apply; summary statistics are CC0 unless otherwise stated. Check individual dataset terms.",
         "source_url": "https://www.ebi.ac.uk/gwas/docs/about/"
@@ -3037,6 +3306,18 @@ window.RESOURCE_CATALOG = {
           "note": "Dataset queries return downloadable tables or JSON"
         }
       },
+      "download_examples": [
+        {
+          "label": "Download an example interaction neighborhood",
+          "description": "Exports interactions involving UniProt P00533 using OmniPath\u2019s documented query, with source and reference fields. This is one protein neighborhood; constituent databases can have different reuse terms.",
+          "command": "curl --fail --location --retry 3 \\\n  --output omnipath-P00533-interactions.tsv \\\n  'https://omnipathdb.org/interactions/?partners=P00533&fields=sources,references'",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://github.com/saezlab/pypath/blob/master/webservice.rst",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "Original resource licenses carry through; commercial-use filters restrict returned records to compatible sources.",
         "source_url": "https://omnipathdb.org/"
@@ -3145,6 +3426,19 @@ window.RESOURCE_CATALOG = {
           "note": "Release downloads and cloud query options"
         }
       },
+      "download_examples": [
+        {
+          "label": "Export one target\u2019s annotations as JSON",
+          "description": "Exports the official example target AR (ENSG00000169083), including genetic-constraint and tractability annotations. This is one API record, rather than a bulk release; comprehensive analyses should use the provider\u2019s partitioned data downloads.",
+          "command": "curl --fail --location \\\n  'https://api.platform.opentargets.org/api/v4/graphql' \\\n  --header 'Content-Type: application/json' \\\n  --data '{\"query\":\"query { target(ensemblId: \\\"ENSG00000169083\\\") { id approvedSymbol biotype geneticConstraint { constraintType exp obs score oe oeLower oeUpper } tractability { label modality value } } }\"}' \\\n  --output open-targets-AR.json",
+          "requirements": [
+            "curl and a fresh working directory.",
+            "Inspect the returned JSON for a GraphQL errors field as well as the data field; an HTTP-success response can still contain query errors."
+          ],
+          "source_url": "https://platform-docs.opentargets.org/data-access/graphql-api",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "Open Targets Platform data is marked CC0 1.0; the provider documents source-specific licensing and permissions.",
         "source_url": "https://platform-docs.opentargets.org/licence"
@@ -3268,6 +3562,18 @@ window.RESOURCE_CATALOG = {
           "note": "Archive downloads and coordinate/experimental files, including PDBx/mmCIF."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download one example structure: 4HHB",
+          "description": "Downloads PDB entry 4HHB in PDBx/mmCIF format, using the provider\u2019s documented example. This retrieves one deposited structure; biological assemblies and experimental supporting files have separate download routes.",
+          "command": "curl --fail --location --retry 3 \\\n  --output 4hhb.cif \\\n  https://files.rcsb.org/download/4hhb.cif",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://www.rcsb.org/docs/programmatic-access/file-download-services",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "PDB archive: CC0 1.0; integrated external annotations can have separate terms.",
         "source_url": "https://www.rcsb.org/pages/policies"
@@ -3391,6 +3697,18 @@ window.RESOURCE_CATALOG = {
           "note": "Database dumps, pathway exchange formats and identifier mappings."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download UniProt-to-pathway mappings",
+          "description": "Downloads the current UniProt-to-Reactome pathway mapping table. It includes species and evidence information; filter it for your organism before analysis. This is a mapping table, not the full reaction database.",
+          "command": "curl --fail --location --retry 3 \\\n  --output UniProt2Reactome.txt \\\n  https://reactome.org/download/current/UniProt2Reactome.txt",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://reactome.org/download-data",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "Data: CC0; pathway illustrations and branding: CC BY 4.0; software has separate terms.",
         "source_url": "https://reactome.org/license"
@@ -3515,6 +3833,19 @@ window.RESOURCE_CATALOG = {
           "note": "Repository links the current RNA and ATAC Zenodo collections; RNA/protein files use h5ad and the inspected ATAC deposit uses ZIP archives."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download a compact example protein matrix",
+          "description": "Downloads PapalexiSatija2021_eccite_arrayed_protein.h5ad (about 551 kB) from the author\u2019s RNA/protein Zenodo deposit, version 1.4. This is one arrayed protein-readout matrix, rather than the RNA counts or the entire collection.",
+          "command": "curl --fail --location \\\n  --output PapalexiSatija2021_eccite_arrayed_protein.h5ad \\\n  'https://zenodo.org/records/13350497/files/PapalexiSatija2021_eccite_arrayed_protein.h5ad?download=1'",
+          "requirements": [
+            "curl and a fresh working directory.",
+            "Read AnnData files with an appropriate analysis tool such as Scanpy; choose other RNA or protein matrices from the same deposit as needed."
+          ],
+          "source_url": "https://zenodo.org/records/13350497",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "unknown",
         "source_url": null
@@ -3643,6 +3974,20 @@ window.RESOURCE_CATALOG = {
           "note": "SRA Toolkit retrieves run lists; converts to FASTQ or SAM"
         }
       },
+      "download_examples": [
+        {
+          "label": "Download one public run and convert to FASTQ",
+          "description": "Prompts for one public SRR, ERR, or DRR run accession. The download is capped at 2 GB; conversion can need roughly 17 times the archive size in total working space. This processes an entire run, rather than a cell matrix or a study-wide run list.",
+          "command": "(\n  set -e\n  read -r -p 'Public SRA run accession (SRR/ERR/DRR): ' sra_run\n  if [[ \"$sra_run\" =~ ^(SRR|ERR|DRR)[0-9]+$ ]]; then\n    vdb-dump \"$sra_run\" --info && \\\n    prefetch \"$sra_run\" --max-size 2G -O \"./$sra_run\" && \\\n    fasterq-dump \"$sra_run\" --split-files --threads 4\n  else\n    printf '%s\\n' 'Enter a single SRR, ERR, or DRR run accession.' >&2\n  fi\n)",
+          "requirements": [
+            "Bash and the NCBI SRA Toolkit (vdb-dump, prefetch, fasterq-dump) installed and configured.",
+            "Choose a public sequencing run and use an empty working directory. Protected runs require authorized access.",
+            "Review the run size shown by vdb-dump and reserve conversion/scratch space; the 2 GB limit intentionally stops larger archives."
+          ],
+          "source_url": "https://github.com/ncbi/sra-tools/wiki/08.-prefetch-and-fasterq-dump",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "Public submissions are accessible; protected human datasets require dbGaP access. Dataset reuse terms were not fully audited.",
         "source_url": "https://www.ncbi.nlm.nih.gov/sra/docs/"
@@ -3765,6 +4110,18 @@ window.RESOURCE_CATALOG = {
           "note": "Official access page links the bulk download service."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download the human STRING v12.5 network",
+          "description": "Downloads the human (taxon 9606) protein-links network with combined scores. This is the functional-association network, not the physical-only network or evidence-channel detail file.",
+          "command": "curl --fail --location --retry 3 \\\n  --output 9606.protein.links.v12.5.txt.gz \\\n  https://stringdb-downloads.org/download/protein.links.v12.5/9606.protein.links.v12.5.txt.gz",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://string-db.org/cgi/download",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "STRING data and outputs: CC BY 4.0; incorporated external material retains its provider\u2019s terms.",
         "source_url": "https://www.string-db.org/cgi/access"
@@ -3891,6 +4248,31 @@ window.RESOURCE_CATALOG = {
           "note": "Parquet files via Hugging Face; Arc also distributes h5ad data, with its current Google Cloud copy subject to Requester Pays and Marketplace setup."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download sample metadata",
+          "description": "Downloads the sample-level metadata Parquet file (about 65.6 kB) from the official Tahoe-100M distribution. This provides condition metadata, rather than single-cell expression counts.",
+          "command": "curl --fail --location --output sample_metadata.parquet \\\n  'https://huggingface.co/datasets/tahoebio/Tahoe-100M/resolve/main/metadata/sample_metadata.parquet'",
+          "requirements": [
+            "curl and a fresh working directory.",
+            "A Parquet reader is needed to inspect the downloaded table. The main branch may change; record its revision for reproducible work."
+          ],
+          "source_url": "https://huggingface.co/datasets/tahoebio/Tahoe-100M/blob/main/metadata/sample_metadata.parquet",
+          "checked_on": "2026-10-22"
+        },
+        {
+          "label": "Download one expression shard",
+          "description": "Downloads only data/train-00000-of-03388.parquet (about 71.2 MB) from the official distribution. This is a file shard, rather than a biologically selected subset or the full 338 GB expression-data directory; retain the matching metadata for interpretation.",
+          "command": "hf download tahoebio/Tahoe-100M \\\n  data/train-00000-of-03388.parquet \\\n  --repo-type dataset --local-dir tahoe-100m",
+          "requirements": [
+            "The Hugging Face hf CLI installed; its download syntax is documented at https://huggingface.co/docs/huggingface_hub/guides/cli .",
+            "A Parquet reader and matching Tahoe gene/sample/cell-line metadata for analysis.",
+            "Allow at least the displayed file size in local storage; main is mutable, so record or pin a revision for reproducibility."
+          ],
+          "source_url": "https://huggingface.co/datasets/tahoebio/Tahoe-100M/tree/main/data",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "Official Hugging Face dataset card labels this distribution CC0-1.0; cloud transfer costs are separate from data licensing.",
         "source_url": "https://huggingface.co/datasets/tahoebio/Tahoe-100M"
@@ -4021,6 +4403,18 @@ window.RESOURCE_CATALOG = {
           "note": "Complete datasets and downloadable search subsets."
         }
       },
+      "download_examples": [
+        {
+          "label": "Download one protein sequence: P04637",
+          "description": "Downloads the canonical FASTA sequence for UniProtKB entry P04637. This retrieves one protein sequence; annotations, isoforms, and complete proteomes require other exports.",
+          "command": "curl --fail --location --retry 3 \\\n  --output P04637.fasta \\\n  https://rest.uniprot.org/uniprotkb/P04637.fasta",
+          "requirements": [
+            "curl. Run in a fresh working directory and check the provider\u2019s file size before transferring."
+          ],
+          "source_url": "https://www.ebi.ac.uk/training/online/courses/uniprot-exploring-protein-sequence-and-functional-info/getting-data-from-uniprot/accessing-uniprot-data-programmatically/",
+          "checked_on": "2026-10-22"
+        }
+      ],
       "licensing": {
         "summary": "CC BY 4.0 for copyrightable parts of the databases.",
         "source_url": "https://www.uniprot.org/help/license"
