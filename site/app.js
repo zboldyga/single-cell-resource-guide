@@ -6,7 +6,10 @@
   const typeLabels = { primary: "Primary data", aggregator: "Aggregator", standard: "Ontology / standard", tool: "Analysis tool" };
   const statusLabels = { yes: "Available", no: "Not available", unknown: "Unknown", not_applicable: "Not applicable" };
   const fieldLabels = { id: "Identity", name: "Name", url: "Official website", purpose: "Purpose", question: "Research question", key_data: "Key data", categories: "Categories", modalities: "Data types", species: "Species", biological_scope: "Biological scope", granularity: "Granularity", resource_type: "Resource type", maintainer: "Maintainer", scale: "Scale", summary: "Summary", as_of: "Source date", source_url: "Source", release: "Substantive release", label: "Release name", date: "Release date", note: "Notes", access: "Access", web: "Web", api: "API", bulk: "Bulk download", status: "Availability", licensing: "Licensing", not_for: "Limitations", sources: "Evidence", verification: "Verification", related: "Related resources" };
-  const state = { query: "", coreOnly: false, categories: new Set(), modalities: new Set(), sort: "name", direction: 1, expanded: new Set() };
+  const state = { query: "", coreOnly: false, categories: new Set(), modalities: new Set(), sort: "name", direction: 1 };
+  const resourceDialog = $("#resource-dialog");
+  let dialogTrigger = null;
+  let backdropPointerDown = false;
   const compare = new Intl.Collator("en", { sensitivity: "base", numeric: true });
   const byId = new Map(resources.map((resource) => [resource.id, resource]));
   const value = (input) => input == null || input === "" ? "Unknown" : String(input);
@@ -76,7 +79,7 @@
     input.value = command;
     input.readOnly = true;
     input.setAttribute("aria-label", "Download command");
-    document.body.append(input);
+    (button.closest("dialog") || document.body).append(input);
     input.select();
     input.setSelectionRange(0, command.length);
     let copied = false;
@@ -127,6 +130,7 @@
           copied = true;
         }
       } catch { /* Try the local-file / denied-permission fallback below. */ }
+      if (!card.isConnected || !resourceDialog.open) return;
       if (!copied) copied = legacyCopy(example.command, copy);
       copy.disabled = false;
       if (copied) {
@@ -152,7 +156,6 @@
     panel.id = panelId;
     const header = el("div", "detail-header");
     const heading = el("div");
-    paragraph(heading, resource.name, "detail-eyebrow");
     const title = el("h3", "", "Access & downloads");
     title.id = panelId + "-title";
     heading.append(title);
@@ -256,7 +259,45 @@
     panel.append(dataset.disclosure, evidence.disclosure);
     return panel;
   }
-  function renderRow(resource, index) {
+  function openDetails(resource, trigger) {
+    dialogTrigger = trigger;
+    $("#resource-dialog-title").textContent = resource.name;
+    $("#resource-dialog-content").replaceChildren(makeDetails(resource, "resource-detail-" + resource.id));
+    document.documentElement.classList.add("modal-open");
+    resourceDialog.showModal();
+    $("#resource-dialog-content").scrollTop = 0;
+    $("#close-resource-dialog").focus({ preventScroll: true });
+  }
+  $("#close-resource-dialog").addEventListener("click", () => resourceDialog.close());
+  resourceDialog.addEventListener("close", () => {
+    document.documentElement.classList.remove("modal-open");
+    $("#resource-dialog-content").replaceChildren();
+    if (dialogTrigger?.isConnected) dialogTrigger.focus({ preventScroll: true });
+    dialogTrigger = null;
+    backdropPointerDown = false;
+  });
+  function outsideDialog(event) {
+    const rect = resourceDialog.getBoundingClientRect();
+    return event.target === resourceDialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom);
+  }
+  resourceDialog.addEventListener("pointerdown", (event) => { backdropPointerDown = outsideDialog(event); });
+  resourceDialog.addEventListener("click", (event) => {
+    if (backdropPointerDown && outsideDialog(event)) resourceDialog.close();
+    backdropPointerDown = false;
+  });
+  resourceDialog.addEventListener("keydown", (event) => {
+    if (event.key !== "Tab") return;
+    const collapsed = [...resourceDialog.querySelectorAll("details:not([open])")];
+    const focusable = [...resourceDialog.querySelectorAll('a[href], button:not([disabled]), summary, [tabindex="0"]')]
+      .filter((node) => node.getClientRects().length && !collapsed.some((details) => details.contains(node) && details.querySelector("summary") !== node));
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault(); first.focus({ preventScroll: true });
+    }
+  });
+  function renderRow(resource) {
     const row = el("tr", "resource-row");
     const nameCell = el("th"); nameCell.scope = "row";
     const name = link(resource.name, resource.url, "resource-name");
@@ -265,18 +306,12 @@
     nameCell.append(el("span", "resource-type type-" + type, typeLabels[type] || "Unknown type"));
     paragraph(nameCell, list(resource.categories).join(" · "), "resource-categories");
     if (resource.verification?.status !== "verified") nameCell.append(el("span", "verification-label provisional", "Provisional"));
-    const detailsRow = el("tr", "details-row"); const detailsCell = el("td"); detailsCell.colSpan = 4;
-    const panelId = "resource-detail-" + resource.id;
-    detailsRow.hidden = !state.expanded.has(resource.id);
-    const toggle = el("button", "detail-toggle", detailsRow.hidden ? "Access & details +" : "Close details −");
-    toggle.type = "button"; toggle.setAttribute("aria-expanded", String(!detailsRow.hidden)); toggle.setAttribute("aria-controls", panelId);
-    toggle.setAttribute("aria-label", (detailsRow.hidden ? "Show" : "Hide") + " access and details for " + resource.name);
-    toggle.addEventListener("click", () => {
-      const open = detailsRow.hidden; detailsRow.hidden = !open;
-      if (open) state.expanded.add(resource.id); else state.expanded.delete(resource.id);
-      toggle.setAttribute("aria-expanded", String(open)); toggle.setAttribute("aria-label", (open ? "Hide" : "Show") + " access and details for " + resource.name);
-      toggle.textContent = open ? "Close details −" : "Access & details +";
-    });
+    const toggle = el("button", "detail-toggle", "Access & details");
+    toggle.type = "button";
+    toggle.setAttribute("aria-haspopup", "dialog");
+    toggle.setAttribute("aria-controls", "resource-dialog");
+    toggle.setAttribute("aria-label", "Open access and details for " + resource.name);
+    toggle.addEventListener("click", () => openDetails(resource, toggle));
     nameCell.append(toggle);
     const data = el("td", "cell-data");
     paragraph(data, value(resource.purpose), "cell-purpose");
@@ -294,8 +329,7 @@
     const question = el("td", "cell-question"); paragraph(question, value(resource.question), "question-text");
     const caveat = el("td", "cell-caveat", value(resource.not_for));
     row.append(nameCell, data, question, caveat);
-    detailsCell.append(makeDetails(resource, panelId)); detailsRow.append(detailsCell);
-    return [row, detailsRow];
+    return row;
   }
   function sortValue(resource) {
     if (state.sort === "checked_on") return resource.verification?.checked_on || null;
@@ -312,7 +346,7 @@
       return (av === null && bv === null ? 0 : compare.compare(av, bv) * state.direction) || originalPosition.get(a.id) - originalPosition.get(b.id);
     });
     const fragment = document.createDocumentFragment();
-    filtered.forEach((resource, index) => fragment.append(...renderRow(resource, index)));
+    filtered.forEach((resource) => fragment.append(renderRow(resource)));
     $("#resource-rows").replaceChildren(fragment);
     $("#result-count").textContent = filtered.length + " of " + resources.length + " resources";
     $("#empty-state").hidden = !!filtered.length || !resources.length;

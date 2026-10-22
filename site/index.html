@@ -6,9 +6,9 @@
   <meta name="description" content="A curated field guide to datasets, atlases, and reference resources for single-cell, perturbation, and adjacent omics research.">
   <meta name="color-scheme" content="light">
   <title>Single-Cell Resource Guide</title>
-  <link rel="stylesheet" href="./styles.css?v=access-downloads-20261022">
+  <link rel="stylesheet" href="./styles.css?v=details-modal-20261022">
   <script defer src="./resources.js?v=access-downloads-20261022"></script>
-  <script defer src="./app.js?v=access-downloads-20261022"></script>
+  <script defer src="./app.js?v=details-modal-20261022"></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to resource table</a>
@@ -37,7 +37,7 @@
       <div id="load-error" class="notice" role="alert" hidden></div>
       <div class="table-scroll" tabindex="0" role="region" aria-label="Resource comparison table" aria-describedby="scroll-cue">
         <table id="resource-table">
-          <caption class="sr-only">Compare biology resources. Sort by name, resource type, or date checked. Expand access and details for metadata and source evidence.</caption>
+          <caption class="sr-only">Compare biology resources. Sort by name, resource type, or date checked. Open access and details in a dialog for downloads, metadata, and source evidence.</caption>
           <colgroup><col class="col-name"><col class="col-data"><col class="col-question"><col class="col-caveat"></colgroup>
           <thead><tr>
             <th scope="col" id="resource-heading" aria-sort="ascending"><span>Resource</span><div class="sort-controls" aria-label="Sort resources"><button type="button" data-sort="name" aria-pressed="true" aria-label="Sort by name, currently ascending">Name <span aria-hidden="true">↑</span></button><button type="button" data-sort="resource_type" aria-pressed="false" aria-label="Sort by resource type">Type</button><button type="button" data-sort="checked_on" aria-pressed="false" aria-label="Sort by date checked">Checked</button></div></th>
@@ -53,5 +53,12 @@
     <footer><p>A curated starting point. Open <strong>Access &amp; details</strong> for sources, availability, and dated checks.</p><p id="catalog-totals"></p></footer>
     <noscript><p class="notice">This guide needs JavaScript to display its local catalog. Enable JavaScript and reopen this page.</p></noscript>
   </main>
+  <dialog id="resource-dialog" class="resource-dialog" aria-labelledby="resource-dialog-title">
+    <header class="dialog-header">
+      <div><p class="detail-eyebrow">Resource details</p><h2 id="resource-dialog-title"></h2></div>
+      <button id="close-resource-dialog" class="dialog-close" type="button" autofocus>Close <span aria-hidden="true">×</span></button>
+    </header>
+    <div id="resource-dialog-content" class="dialog-content"></div>
+  </dialog>
 </body>
 </html>
