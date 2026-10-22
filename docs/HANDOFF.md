@@ -1,6 +1,6 @@
 # Handoff
 
-The Single-Cell Resource Guide contains **33 resources; 33 core-verified, 0 provisional**. It is a static, dependency-free page with full-text search, multi-select category/data-type filters, sorting, expandable access/evidence, and a one-click GTEx/DepMap/CELLxGENE comparison. The repository includes a local preview; a hosted website is not configured.
+The Single-Cell Resource Guide contains **33 resources; 33 core-verified, 0 provisional**. It is a static, dependency-free page with full-text search, multi-select category/data-type filters, sorting, expandable access/evidence, and a one-click GTEx/DepMap/CELLxGENE comparison. The hosted guide is at https://zboldyga.github.io/single-cell-resource-guide/.
 
 The October 22 revision uses modern component styling, sans-serif typography, colored resource-type badges, removable filter chips, and a wider four-column comparison. All 33 summaries were enriched using `gemini-4-argon-high` at high effort, then condensed into labeled data/design bullets and reviewed against primary evidence. GTEx now explains donor-linked tissues and its separately scoped single-nucleus atlas; AlphaFold DB includes its 2026 complex predictions. The interface uses native local CSS rather than a remote Tailwind runtime.
 
@@ -12,7 +12,7 @@ Open `site/index.html` directly in a browser; the catalog is bundled locally and
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-Then visit http://127.0.0.1:8765/site/. To host with GitHub Pages or another static host, use the contents of `site/` as the document root. All asset paths are relative; no build service, database, keys, remote fonts or runtime network calls are required.
+Then visit http://127.0.0.1:8765/site/. GitHub Pages uses `.github/workflows/pages.yml` to publish the contents of `site/` as the document root on every push to `main`; repository Settings → Pages uses **GitHub Actions** as the source. The workflow publishes committed static files, so rebuild and commit `site/resources.js` after catalog edits. All asset paths are relative; no database, custom deployment keys, remote fonts or runtime network calls are required.
 
 ## Files
 

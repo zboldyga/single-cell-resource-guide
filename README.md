@@ -2,6 +2,8 @@
 
 A curated field guide to datasets, atlases, and reference resources for **single-cell, perturbation, and adjacent omics research**.
 
+**[Browse the guide →](https://zboldyga.github.io/single-cell-resource-guide/)**
+
 Compare **33 resources** in one searchable, filterable table: what each contains, when to use it, what it lacks, and how to access it. The collection includes CELLxGENE, GTEx, DepMap, Tahoe, and scPerturb, alongside supporting resources for genes, proteins, pathways, regulation, and disease.
 
 The organizing principle is usefulness to this research workflow. Resources can include bulk tissue data, cell-line screens, ontologies, and molecular references as well as single-cell measurements.
@@ -19,6 +21,12 @@ python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
 Open **http://127.0.0.1:8765/site/**.
+
+## GitHub Pages
+
+Pushes to `main` publish the contents of `site/` at the [website's root URL](https://zboldyga.github.io/single-cell-resource-guide/) through [the Pages workflow](.github/workflows/pages.yml). In repository **Settings → Pages**, the source is **GitHub Actions**. The workflow can also be run manually from the Actions tab.
+
+Rebuild `site/resources.js` after editing the YAML, as described below; the workflow publishes the committed static files.
 
 ## What the guide provides
 
