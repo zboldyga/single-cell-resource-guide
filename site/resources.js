@@ -1,0 +1,4113 @@
+// Generated from the authoritative catalog; do not edit.
+window.RESOURCE_CATALOG = {
+  "schema_version": "1.0",
+  "title": "Single-Cell Resource Guide",
+  "updated_at": "2026-10-22",
+  "resources": [
+    {
+      "id": "alphafold-db",
+      "name": "AlphaFold Protein Structure Database",
+      "url": "https://alphafold.ebi.ac.uk/",
+      "purpose": "Public repository of AlphaFold-predicted 3D atomic coordinates and confidence metrics for monomeric proteins alongside selected homodimeric, heterodimeric, and viral protein complexes.",
+      "question": "What is the predicted 3D fold or dimer interface for my protein, and are key residues modeled with high confidence?",
+      "categories": [
+        "Proteins & structures"
+      ],
+      "modalities": [
+        "Predicted structures",
+        "Macromolecular complexes",
+        "Protein sequences",
+        "Variant classifications"
+      ],
+      "species": [
+        "Multiple species"
+      ],
+      "biological_scope": "Canonical single-chain proteins across UniProt reference proteomes and Swiss-Prot, plus expanded 2026 collections of predicted homodimers, heterodimers, and viral protein complexes without bound nucleic acids or small-molecule ligands.",
+      "granularity": [
+        "Protein",
+        "Residue",
+        "Structure",
+        "Protein complex"
+      ],
+      "resource_type": "primary",
+      "maintainer": "Google DeepMind and EMBL-EBI",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://alphafold.ebi.ac.uk/",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "unknown",
+          "url": null,
+          "note": "Official API documentation page was found, but its contents could not be inspected."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://alphafold.ebi.ac.uk/download",
+          "note": "Proteome and selected collaborator archives; individual predictions downloadable from structure pages."
+        }
+      },
+      "licensing": {
+        "summary": "CC BY 4.0 for downloadable data; cite the relevant prediction dataset.",
+        "source_url": "https://alphafold.ebi.ac.uk/download"
+      },
+      "not_for": "Predictions are not experimental structures. Complex coverage remains incomplete, and confidence scores do not establish binding, activity, or a unique cellular conformation; inspect local and interface uncertainty.",
+      "sources": [
+        {
+          "url": "https://alphafold.ebi.ac.uk/about",
+          "title": "About AlphaFold DB",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://alphafold.ebi.ac.uk/faq",
+          "title": "AlphaFold DB frequently asked questions",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "access",
+            "not_for",
+            "modalities",
+            "biological_scope",
+            "purpose",
+            "granularity"
+          ]
+        },
+        {
+          "url": "https://alphafold.ebi.ac.uk/download",
+          "title": "AlphaFold DB downloads",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "biological_scope",
+            "licensing",
+            "not_for",
+            "key_data"
+          ]
+        },
+        {
+          "url": "https://www.ebi.ac.uk/about/news/technology-and-innovation/first-complexes-alphafold-database/",
+          "title": "EMBL-EBI: protein complexes added to AlphaFold Database",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "not_for"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "pdb"
+      ],
+      "key_data": [
+        "Monomer and complex models: Predicted 3D coordinates for UniProt single-chain proteins plus high-confidence and bulk lower-confidence homodimers, heterodimers, and viral complexes.",
+        "Local confidence (pLDDT): Per-residue scores (0 to 100) assessing local structural reliability; low values reflect either intrinsic disorder or model uncertainty.",
+        "Domain and interface error (PAE): Pairwise Predicted Aligned Error matrices quantifying inter-residue, inter-domain, and inter-chain positional uncertainty in Angstroms.",
+        "Functional and variant annotations: Residue-level cross-references to UniProt features, InterPro domains, and human AlphaMissense single-substitution pathogenicity predictions."
+      ]
+    },
+    {
+      "id": "biogrid",
+      "name": "BioGRID",
+      "url": "https://thebiogrid.org/",
+      "purpose": "Literature-curated archive of experimentally observed physical protein interactions, genetic interactions, post-translational modification sites, and chemical-target associations across human and model organisms.",
+      "question": "Which physical binding partners, synthetic-lethal genetic interactors, or modifying enzymes are experimentally reported for my target gene in primary literature?",
+      "categories": [
+        "Pathways & interactions"
+      ],
+      "modalities": [
+        "Protein interactions",
+        "Genetic interactions",
+        "Post-translational modifications",
+        "Drug-target annotations"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Saccharomyces cerevisiae",
+        "Schizosaccharomyces pombe",
+        "Arabidopsis thaliana",
+        "Other model organisms"
+      ],
+      "biological_scope": "Experimentally reported interactions curated from primary literature across human, yeast, mouse, fly, worm, plant, and viral pathogens, with companion CRISPR screen indexing in BioGRID-ORCS.",
+      "granularity": [
+        "Gene pair",
+        "Protein pair",
+        "Modification site"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "BioGRID project",
+      "scale": {
+        "summary": "About 2.36 million non-redundant interactions in the October 1, 2026 release announcement.",
+        "as_of": "2026-10-01",
+        "source_url": "https://thebiogrid.org/"
+      },
+      "release": {
+        "label": "5.0.262",
+        "date": "2026-10-01",
+        "source_url": "https://thebiogrid.org/",
+        "note": "Dated substantive release announcement; downloads were compiled September 25, 2026."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://thebiogrid.org/",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://wiki.thebiogrid.org/doku.php/biogridrest",
+          "note": "REST service requires an application access key."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://downloads.thebiogrid.org/BioGRID/Latest-Release/",
+          "note": "Complete and organism-specific interaction files; use current formats."
+        }
+      },
+      "licensing": {
+        "summary": "MIT License for downloadable BioGRID data.",
+        "source_url": "https://downloads.thebiogrid.org/BioGRID/Latest-Release/"
+      },
+      "not_for": "Genetic interaction edges capture phenotypic epistasis rather than physical binding, and pooled literature records merge heterogeneous cell lines and overexpression assays without guaranteeing interaction in your cell state.",
+      "sources": [
+        {
+          "url": "https://wiki.thebiogrid.org/doku.php/aboutus",
+          "title": "About BioGRID",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://thebiogrid.org/",
+          "title": "BioGRID home and release news",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "access",
+            "release",
+            "scale"
+          ]
+        },
+        {
+          "url": "https://wiki.thebiogrid.org/doku.php/biogridrest",
+          "title": "BioGRID REST Service",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access"
+          ]
+        },
+        {
+          "url": "https://downloads.thebiogrid.org/BioGRID/Latest-Release/",
+          "title": "BioGRID latest release downloads",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "key_data",
+            "licensing",
+            "modalities"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "string",
+        "reactome"
+      ],
+      "key_data": [
+        "Physical interactions: Literature-reported protein associations with assay codes, distinguishing affinity-capture or co-complex evidence from direct-binding assays.",
+        "Genetic interactions: Epistatic and phenotypic modifier pairs including synthetic lethality, dosage rescue, and phenotypic enhancement or suppression.",
+        "Study provenance: PubMed citations, organism taxonomy, directional bait-to-hit roles, quantitative scores where published, and low- versus high-throughput study flags.",
+        "PTMs and chemicals: Curated post-translational modification sites linked to modifying enzymes alongside bioactive chemical-protein target interactions."
+      ]
+    },
+    {
+      "id": "cell-ontology",
+      "name": "Cell Ontology (CL)",
+      "url": "https://obophenotype.github.io/cell-ontology/",
+      "purpose": "OBO Foundry reference ontology defining a directed acyclic graph of metazoan cell types, lineage relationships, and anatomical or functional axioms.",
+      "question": "Which standardized CL ontology term and lineage ancestor should I assign to my annotated single-cell clusters for integration with reference atlases?",
+      "categories": [
+        "Archives & standards"
+      ],
+      "modalities": [
+        "Cell-type ontology",
+        "Ontology",
+        "Functional annotations"
+      ],
+      "species": [
+        "Metazoa"
+      ],
+      "biological_scope": "Primarily in vivo, non-pathological metazoan (especially mammalian and vertebrate) cell types across tissues and developmental stages; excludes immortalized cell lines and patient-specific malignant neomorphic states.",
+      "granularity": [
+        "Cell type",
+        "Ontology term"
+      ],
+      "resource_type": "standard",
+      "maintainer": "Cell Ontology community (obophenotype)",
+      "scale": {
+        "summary": "3,325 subclasses of the root in the June 8, 2026 ontology release.",
+        "as_of": "2026-06-08",
+        "source_url": "https://github.com/obophenotype/cell-ontology/releases"
+      },
+      "release": {
+        "label": "2026-06-08",
+        "date": "2026-06-08",
+        "source_url": "https://github.com/obophenotype/cell-ontology/releases",
+        "note": "Latest displayed ontology release; release notes enumerate content changes."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://obophenotype.github.io/cell-ontology/",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "unknown",
+          "url": null,
+          "note": "API availability not verified."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://github.com/obophenotype/cell-ontology/releases",
+          "note": "Versioned ontology release files; main products include OWL/OBO/JSON."
+        }
+      },
+      "licensing": {
+        "summary": "CC BY 4.0.",
+        "source_url": "https://obofoundry.org/ontology/cl.html"
+      },
+      "not_for": "Defines semantic cell-type concepts and lineage hierarchy rather than storing reference expression profiles or classifier weights; assigning a term still requires transcriptomic marker evidence from your dataset.",
+      "sources": [
+        {
+          "url": "https://obophenotype.github.io/cell-ontology/",
+          "title": "Cell Ontology documentation",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://obofoundry.org/ontology/cl.html",
+          "title": "Cell Ontology official OBO Foundry record",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "biological_scope",
+            "key_data",
+            "access",
+            "licensing",
+            "purpose",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://github.com/obophenotype/cell-ontology/releases",
+          "title": "Cell Ontology releases",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "release",
+            "scale"
+          ]
+        },
+        {
+          "url": "https://github.com/obophenotype/cell-ontology",
+          "title": "Cell Ontology source repository",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "maintainer",
+            "key_data",
+            "access"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "cellxgene",
+        "gene-ontology"
+      ],
+      "key_data": [
+        "Cell-type terms: Stable CL identifiers paired with textual definitions, exact and broad synonyms, and curated marker or phenotypic notes.",
+        "Lineage hierarchy: Subtype classifications and ontogenic lineage edges linking stem and progenitor populations to differentiated somatic and immune cell states.",
+        "Cross-ontology axioms: Logical links connecting cell types to Uberon anatomical structures, Gene Ontology biological processes, and phenotypic qualities."
+      ]
+    },
+    {
+      "id": "chembl",
+      "name": "ChEMBL",
+      "url": "https://www.ebi.ac.uk/chembl/",
+      "purpose": "Curates quantitative small-molecule bioactivities, standardized chemical structures, and experimental assay parameters from medicinal chemistry literature, patents, and deposited screens.",
+      "question": "Which tool compounds or clinical molecules potently modulate my protein target in direct binding versus cell-based functional assays, and at what concentrations?",
+      "categories": [
+        "Disease & drug discovery"
+      ],
+      "modalities": [
+        "Bioactivity assays",
+        "Chemical structures",
+        "Drug-target annotations",
+        "Drug annotations"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Mus musculus",
+        "Rattus norvegicus",
+        "Other species"
+      ],
+      "biological_scope": "Bioactive small molecules, peptides, and biotherapeutics tested against recombinant proteins, complexes, cell lines, and organisms across human, rodent, and microbial targets.",
+      "granularity": [
+        "Compound",
+        "Assay",
+        "Target",
+        "Cell line"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "EMBL-EBI ChEMBL team",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "ChEMBL 37",
+        "date": null,
+        "source_url": "https://chembl.gitbook.io/chembl-interface-documentation/downloads",
+        "note": "Official downloads page lists May 2026; exact release day not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.ebi.ac.uk/chembl/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://chembl.gitbook.io/chembl-interface-documentation/web-services/chembl-data-web-services",
+          "note": "REST resources for compounds, assays, activities and targets"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://chembl.gitbook.io/chembl-interface-documentation/downloads",
+          "note": "Database dumps plus structure and sequence files"
+        }
+      },
+      "licensing": {
+        "summary": "Database provided under CC BY-SA 3.0.",
+        "source_url": "https://www.ebi.ac.uk/chembl/"
+      },
+      "not_for": "Literature-extracted biochemical and phenotypic endpoints lack genome-wide transcriptomic readouts; unfiltered queries easily conflate nonspecific whole-cell cytotoxicity with direct target engagement.",
+      "sources": [
+        {
+          "url": "https://www.ebi.ac.uk/chembl/",
+          "title": "ChEMBL home",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "access.web",
+            "licensing",
+            "maintainer",
+            "key_data"
+          ]
+        },
+        {
+          "url": "https://chembl.gitbook.io/chembl-interface-documentation/web-services/chembl-data-web-services",
+          "title": "ChEMBL data web services",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "biological_scope",
+            "species",
+            "access.api",
+            "purpose",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://chembl.gitbook.io/chembl-interface-documentation/downloads",
+          "title": "ChEMBL downloads",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access.bulk",
+            "release"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [],
+      "key_data": [
+        "Bioactivity endpoints: Quantitative dose-response metrics and single-concentration readouts categorized into direct binding, functional, and ADMET assay types.",
+        "Target confidence: Explicit confidence scores distinguishing assigned single protein targets from protein complexes, protein families, or whole-cell phenotypic assays.",
+        "Chemical properties: Standardized 2D chemical structures, physicochemical descriptors, structural alerts, and curated mechanisms of action for clinical and tool molecules.",
+        "Assay provenance: Curated target organism, UniProt accession, mutant status, cell or tissue context, and source publication or patent identifiers."
+      ]
+    },
+    {
+      "id": "clinvar",
+      "name": "ClinVar",
+      "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+      "purpose": "Archives submitter-reported clinical and functional classifications of human variants across germline, somatic, and pharmacogenomic contexts while tracking review levels and conflicts.",
+      "question": "Have clinical laboratories or expert panels classified this human variant as pathogenic or oncogenic, and do independent submitters agree?",
+      "categories": [
+        "Disease & drug discovery",
+        "Genes & genomes"
+      ],
+      "modalities": [
+        "Variant classifications",
+        "Clinical annotations",
+        "Clinical evidence",
+        "Genetic associations"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Human germline and somatic sequence, structural, and copy-number variants evaluated for Mendelian disorders, hereditary or somatic cancers, and pharmacogenomic phenotypes.",
+      "granularity": [
+        "Variant",
+        "Variant-condition assertion"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "NCBI, US National Library of Medicine",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.ncbi.nlm.nih.gov/clinvar/docs/programmatic_access/",
+          "note": "Entrez E-utilities"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.ncbi.nlm.nih.gov/clinvar/docs/downloads/",
+          "note": "Complete public XML; TSV summaries and more limited VCF exports"
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Submitted interpretations can conflict; check review stars, dates, and supporting evidence. ClinVar records submitted classifications rather than independently adjudicating pathogenicity.",
+      "sources": [
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/clinvar/intro/",
+          "title": "What is ClinVar?",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access.web",
+            "maintainer",
+            "not_for",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/clinvar/docs/programmatic_access/",
+          "title": "ClinVar programmatic access",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access.api"
+          ]
+        },
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/clinvar/docs/downloads/",
+          "title": "ClinVar downloads",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access.bulk"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "gnomad"
+      ],
+      "key_data": [
+        "Submission hierarchy: Linked records connecting individual laboratory submissions to variant-condition aggregates and variant-centric master summaries across sequence and structural variants.",
+        "Classification axes: Distinct assertions for germline pathogenicity, somatic oncogenicity, somatic clinical actionability, and pharmacogenomic drug response.",
+        "Review status: Zero-to-four-star ratings and conflict flags distinguishing practice guidelines and expert panels from single-submitter, conflicting, or criteria-lacking assertions."
+      ]
+    },
+    {
+      "id": "complex-portal",
+      "name": "Complex Portal",
+      "url": "https://www.ebi.ac.uk/complexportal/",
+      "purpose": "Catalogs macromolecular protein complexes with subunit composition and evidence provenance, separating literature-curated assemblies from explicitly flagged machine-learning-predicted human complexes.",
+      "question": "Which protein subunits and cofactors form this functional macromolecular complex, and is the assembly experimentally verified or computationally predicted?",
+      "categories": [
+        "Proteins & structures",
+        "Pathways & interactions"
+      ],
+      "modalities": [
+        "Macromolecular complexes",
+        "Protein interactions",
+        "Functional annotations"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Model organisms"
+      ],
+      "biological_scope": "Curated macromolecular complexes across human, mouse, yeast, bacteria, and viruses, alongside proteome-scale predicted human assemblies.",
+      "granularity": [
+        "Complex",
+        "Protein subunit"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "EMBL-EBI Complex Portal team",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.ebi.ac.uk/complexportal/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.ebi.ac.uk/intact/complex-ws/",
+          "note": "Search, detail and export web services"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.ebi.ac.uk/complexportal/download",
+          "note": "PSI-MI XML and species-level ComplexTab files"
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Reference catalog of canonical and predicted assemblies; subunit stoichiometry is not always experimentally determined, and entries do not capture cell-state-specific subunit expression or post-perturbation remodeling.",
+      "sources": [
+        {
+          "url": "https://www.ebi.ac.uk/training/online/courses/complex-portal-quick-tour/what-is-complex-portal/",
+          "title": "What is Complex Portal?",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access.web",
+            "not_for",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.ebi.ac.uk/training/online/courses/complex-portal-quick-tour/getting-data-from-complex-portal/",
+          "title": "Getting data from Complex Portal",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access.api",
+            "access.bulk",
+            "key_data",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.ebi.ac.uk/intact/complex-ws/",
+          "title": "Complex web service",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access.api"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "omnipath"
+      ],
+      "key_data": [
+        "Curated assemblies: Stable complex records listing protein subunits, cofactors, nucleic acids, and subunit stoichiometry where experimentally known.",
+        "Evidence provenance: Ontology-coded distinctions between complexes backed by direct physical interaction assays and assemblies inferred by sequence orthology.",
+        "Predicted human complexes: Explicitly flagged machine-learning-derived candidate assemblies integrated from large-scale proteomic co-fractionation and affinity-purification maps.",
+        "Functional context: Complex-level Gene Ontology annotations, catalytic roles, disease associations, and standard interaction network exports."
+      ]
+    },
+    {
+      "id": "cellxgene",
+      "name": "CZ CELLxGENE Discover / Census",
+      "url": "https://cellxgene.cziscience.com/",
+      "purpose": "Aggregates published single-cell and single-nucleus RNA-seq studies under a standardized schema for dataset exploration in Discover or cross-study slicing via Census.",
+      "question": "Which published primary cells express my target genes across ontology-matched tissues and diseases, and how can I slice their raw counts programmatically?",
+      "categories": [
+        "Expression & cell atlases"
+      ],
+      "modalities": [
+        "Single-cell RNA-seq",
+        "Single-nucleus RNA-seq",
+        "Cell-type ontology"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Mus musculus",
+        "Macaca mulatta",
+        "Callithrix jacchus",
+        "Pan troglodytes"
+      ],
+      "biological_scope": "Published single-cell and single-nucleus transcriptomic studies across healthy, diseased, and experimentally perturbed tissues in human, mouse, and non-human primates.",
+      "granularity": [
+        "Cell",
+        "Gene"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "Chan Zuckerberg Initiative",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Census documentation names LTS 2025-11-08; this is a subproduct snapshot, not a verified latest release of the entire suite."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://cellxgene.cziscience.com/",
+          "note": "Browse official resource."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://chanzuckerberg.github.io/cellxgene-census/",
+          "note": "Census Python/R access queries Discover-derived RNA data; Discover also has a separate collection/dataset API."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://cellxgene.cziscience.com/docs/03__Download%20Published%20Data",
+          "note": "Download annotated h5ad datasets; new Seurat RDS downloads were deprecated, although older files remain accessible."
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Multi-study Census slices are concatenated rather than batch-corrected, Discover normalized layers vary by author workflow, and omitting the is_primary_data filter duplicates cells shared between primary deposits and meta-analyses.",
+      "sources": [
+        {
+          "url": "https://cellxgene.cziscience.com/docs/01__CellxGene",
+          "title": "CELLxGENE suite documentation",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "access",
+            "maintainer",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://chanzuckerberg.github.io/cellxgene-census/",
+          "title": "Census documentation",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "species",
+            "access",
+            "not_for",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://cellxgene.cziscience.com/docs/03__Download%20Published%20Data",
+          "title": "Downloading published data",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "key_data",
+            "modalities"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "human-cell-atlas",
+        "gtex"
+      ],
+      "key_data": [
+        "Discover study files: Schema-validated AnnData datasets pairing raw integer counts with author-supplied normalized expression matrices and embeddings.",
+        "Census array slicing: Unified TileDB-SOMA arrays enabling out-of-core Python and R queries across studies with raw counts and Census-normalized expression layers.",
+        "Standardized cell metadata: Ontology-mapped terms for cell type, tissue, disease, assay, sex, and developmental stage alongside study-specific donor identifiers.",
+        "Deduplication flag: Cell-level is_primary_data boolean identifying canonical cell instances to prevent double-counting across overlapping primary studies and meta-atlases."
+      ]
+    },
+    {
+      "id": "depmap",
+      "name": "DepMap",
+      "url": "https://depmap.org/portal/",
+      "purpose": "Pairs genome-wide CRISPR and RNAi viability screens and compound assays with unperturbed baseline multi-omic profiles across hundreds of human cancer cell lines.",
+      "question": "Which gene knockouts or small molecules selectively reduce viability in cancer cell lines with a specific baseline mutation, copy-number change, or lineage?",
+      "categories": [
+        "Perturbation & dependencies",
+        "Disease & drug discovery"
+      ],
+      "modalities": [
+        "CRISPR viability screens",
+        "RNAi screens",
+        "Drug viability screens",
+        "Bulk RNA-seq",
+        "DNA sequencing",
+        "Proteomics"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Human cancer cell lines and selected organoid models across solid and hematologic lineages, linked by shared model identifiers across CRISPR, RNAi, drug screening, and baseline multi-omic datasets.",
+      "granularity": [
+        "Cell line",
+        "Gene",
+        "Compound"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "Broad Institute; collaborating data producers include Wellcome Sanger Institute",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Portal announces 26Q3 data, but the substantive publication date was not verified; release-note page was gated."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://depmap.org/portal/",
+          "note": "Browse official resource."
+        },
+        "api": {
+          "status": "unknown",
+          "url": null,
+          "note": "Not verified."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://depmap.org/portal/data_page/",
+          "note": "Portal documents release and historical dataset downloads; automated inspection of the download page encountered a human-verification gate."
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Core genetic and compound screens measure cell viability dropout rather than post-perturbation transcriptomic changes, and matched CCLE multi-omics reflect unperturbed baseline cell states rather than expression after each knockout.",
+      "sources": [
+        {
+          "url": "https://depmap.org/portal/",
+          "title": "DepMap Portal",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "access",
+            "release",
+            "maintainer",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://forum.depmap.org/t/depmap-portal-datasets/3695",
+          "title": "DepMap official dataset guide",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "biological_scope",
+            "access",
+            "purpose",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://depmap.org/broad-sanger/",
+          "title": "Broad/Sanger DepMap collaboration",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "species",
+            "not_for"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "tahoe-100m",
+        "lincs-cmap"
+      ],
+      "key_data": [
+        "CRISPR dependency screens: Genome-wide knockout gene-effect fitness scores and dependency probabilities corrected for copy-number cutting artifacts across cancer cell lines.",
+        "Compound sensitivity: High-throughput small-molecule viability and dose-response profiles from pooled barcoded PRISM screens, GDSC, and CTD2 datasets.",
+        "RNAi knockdown screens: Legacy RNAi viability scores enabling comparison between partial transcript depletion and complete CRISPR knockout across shared models.",
+        "Matched baseline omics: Unperturbed bulk RNA-seq, copy number, somatic mutations, fusions, and proteomics linked to screens by shared model identifiers."
+      ]
+    },
+    {
+      "id": "encode",
+      "name": "ENCODE",
+      "url": "https://www.encodeproject.org/",
+      "purpose": "Catalogs candidate cis-regulatory elements and functional genomic signals in human and mouse from chromatin, transcription factor binding, transcriptomic, and perturbation assays.",
+      "question": "Which chromatin accessibility peaks, histone marks, transcription factor binding sites, or CRISPR-tested regulatory elements overlap my locus in a relevant cell type?",
+      "categories": [
+        "Regulation & epigenomics"
+      ],
+      "modalities": [
+        "ChIP-seq",
+        "ATAC-seq",
+        "DNase-seq",
+        "Bulk RNA-seq",
+        "Single-cell RNA-seq",
+        "Genetic perturbations"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Mus musculus"
+      ],
+      "biological_scope": "Human and mouse primary tissues, primary cells, immortalized cell lines, and in vitro differentiated models across baseline and experimentally perturbed states.",
+      "granularity": [
+        "Genomic region",
+        "Biosample",
+        "Gene"
+      ],
+      "resource_type": "primary",
+      "maintainer": "ENCODE Consortium and Data Coordinating Center",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.encodeproject.org/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.encodeproject.org/help/rest-api/",
+          "note": "REST queries return JSON metadata"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.encodeproject.org/about/data-access/",
+          "note": "Bulk data and metadata downloads are documented"
+        }
+      },
+      "licensing": {
+        "summary": "Released ENCODE data may be downloaded, analyzed and published without use restrictions; follow citation guidance.",
+        "source_url": "https://www.encodeproject.org/about/data-use-policy/"
+      },
+      "not_for": "Biochemical occupancy or open chromatin marks candidate regulatory elements but does not prove causal target-gene regulation without matched perturbation or reporter evidence in that cell state.",
+      "sources": [
+        {
+          "url": "https://www.encodeproject.org/about/data-use-policy/",
+          "title": "ENCODE data-use policy",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "biological_scope",
+            "species",
+            "maintainer",
+            "licensing"
+          ]
+        },
+        {
+          "url": "https://www.encodeproject.org/pipelines/",
+          "title": "ENCODE data processing pipelines",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "modalities",
+            "not_for",
+            "purpose"
+          ]
+        },
+        {
+          "url": "https://www.encodeproject.org/help/rest-api/",
+          "title": "ENCODE REST API",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access.api"
+          ]
+        },
+        {
+          "url": "https://www.encodeproject.org/about/data-access/",
+          "title": "Access to ENCODE data",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access.web",
+            "access.bulk"
+          ]
+        },
+        {
+          "url": "https://screen.encodeproject.org/",
+          "title": "SCREEN: Search Candidate cis-Regulatory Elements by ENCODE",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "question",
+            "modalities"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "jaspar",
+        "gtex",
+        "open-targets"
+      ],
+      "key_data": [
+        "Chromatin and expression assays: Uniformly processed ChIP-seq, DNase-seq, ATAC-seq, DNA methylation, and bulk or single-cell RNA-seq signal tracks and peaks.",
+        "Regulatory registry: Integrative candidate cis-regulatory elements classified into promoter-like, enhancer-like, and insulator-like states from histone, accessibility, and CTCF signals.",
+        "Perturbation validation: CRISPR regulatory screens, massively parallel reporter assays, and RNA-binding protein knockdown or binding profiles in selected cell lines.",
+        "Biosample provenance: Structured metadata tracking tissues, primary cells, cell lines, in vitro differentiated models, genetic modifications, and experimental treatments."
+      ]
+    },
+    {
+      "id": "ensembl",
+      "name": "Ensembl",
+      "url": "https://www.ensembl.org/",
+      "purpose": "Comparative genomics and genome annotation platform integrating reference assemblies, transcript models, evolutionary gene trees, genetic variation, and regulatory elements across eukaryotes.",
+      "question": "How do I map stable gene coordinates, identify high-confidence human-mouse orthologues, or annotate variant consequences and regulatory elements around perturbed loci?",
+      "categories": [
+        "Genes & genomes"
+      ],
+      "modalities": [
+        "Genome sequences",
+        "Gene annotations",
+        "Comparative genomics",
+        "Population variants",
+        "Variant classifications"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Mus musculus",
+        "Multiple species"
+      ],
+      "biological_scope": "Vertebrates and diverse eukaryotic taxa; human and mouse gene models match GENCODE releases, while multi-cell-type regulatory builds and deep variation catalogs focus on human, mouse, and major model species.",
+      "granularity": [
+        "Genome",
+        "Gene",
+        "Transcript",
+        "Variant"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "EMBL-EBI",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.ensembl.org/",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.ebi.ac.uk/training/online/courses/ensembl-data-platform/retrieving-ensembl-data/programmatic-data-access-and-bulk-download/",
+          "note": "New platform: GraphQL and Refget documented by EMBL-EBI."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://ftp.ebi.ac.uk/pub/ensemblorganisms/",
+          "note": "Current-platform flat files; link documented in official training."
+        }
+      },
+      "licensing": {
+        "summary": "Ensembl-generated data is available without restriction; integrated third-party material may have separate constraints. Project code uses Apache 2.0.",
+        "source_url": "https://www.ensembl.org/about/articles/ensembl-content-disclaimer"
+      },
+      "not_for": "Reference sequences and annotations are not sample expression measurements. Match genome assembly and annotation release when comparing coordinates, transcript models, or variant consequences.",
+      "sources": [
+        {
+          "url": "https://www.ebi.ac.uk/training/online/courses/ensembl-data-platform/what-is-ensembl-data-platform/",
+          "title": "What is the Ensembl Data Platform?",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.ebi.ac.uk/training/online/courses/ensembl-data-platform/retrieving-ensembl-data/programmatic-data-access-and-bulk-download/",
+          "title": "Ensembl programmatic access and bulk download",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access"
+          ]
+        },
+        {
+          "url": "https://www.ebi.ac.uk/training/online/courses/ensembl-browsing-genomes/what-is-ensembl/ensembl-project/",
+          "title": "The Ensembl project",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "maintainer",
+            "biological_scope",
+            "not_for",
+            "key_data"
+          ]
+        },
+        {
+          "url": "https://jun2026.archive.ensembl.org/info/index.html",
+          "title": "Ensembl legacy service status",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://www.ensembl.org/about/articles/ensembl-content-disclaimer",
+          "title": "Use of Ensembl content and data",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "licensing"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "gencode",
+        "hgnc",
+        "uniprot"
+      ],
+      "key_data": [
+        "Gene and transcript models: Coordinate-indexed genes, transcripts, exons, and coding sequences on specific genome assemblies with stable identifiers and MANE tags.",
+        "Comparative genomics: Phylogenetic gene trees, pairwise orthology and paralogy classifications, and whole-genome alignments supporting cross-species gene translation.",
+        "Variation and VEP: Short and structural variant catalogs, population frequencies, phenotype links, and transcript-level functional consequence predictions.",
+        "Regulatory build: Multi-cell-type epigenomic annotations mapping candidate promoters, enhancers, CTCF binding sites, and open chromatin regions."
+      ]
+    },
+    {
+      "id": "gencode",
+      "name": "GENCODE",
+      "url": "https://www.gencodegenes.org/",
+      "purpose": "Reference human and mouse genome annotation merging manual curation with automated transcript models to define coding, non-coding, and pseudogene features.",
+      "question": "Which GENCODE annotation tier (Basic vs Comprehensive) and assembly scope should I use to build my RNA-seq or CRISPR-screen quantification reference?",
+      "categories": [
+        "Genes & genomes"
+      ],
+      "modalities": [
+        "Gene annotations",
+        "Transcript sequences",
+        "Protein sequences",
+        "Genome sequences"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Mus musculus"
+      ],
+      "biological_scope": "Human (GRCh38 and GRCh37 liftover) and mouse (GRCm39) reference genomes, serving as the standard gene model foundation for Ensembl, CELLxGENE, GTEx, and ENCODE.",
+      "granularity": [
+        "Gene",
+        "Transcript",
+        "Exon"
+      ],
+      "resource_type": "primary",
+      "maintainer": "GENCODE project",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "Human 50; Mouse M39 (June 2026)",
+        "date": null,
+        "source_url": "https://www.gencodegenes.org/",
+        "note": "Official homepage provides month and year only; exact substantive release day unknown."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.gencodegenes.org/",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.gencodegenes.org/pages/data_access.html",
+          "note": "GENCODE annotations are accessible through the linked Ensembl interfaces; select compatible release/assembly."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.gencodegenes.org/pages/data_access.html",
+          "note": "Human and mouse release files: GTF/GFF3, FASTA and metadata."
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Provides reference coordinates and transcript models rather than expression measurements or an exhaustive catalog of every biological isoform; mixing releases or Basic versus Comprehensive GTFs alters feature counts across pipelines.",
+      "sources": [
+        {
+          "url": "https://www.gencodegenes.org/",
+          "title": "GENCODE home",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "release",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.gencodegenes.org/human/",
+          "title": "GENCODE human release 50",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "biological_scope",
+            "access",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://www.gencodegenes.org/pages/data_access.html",
+          "title": "GENCODE data access",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "not_for",
+            "key_data"
+          ]
+        },
+        {
+          "url": "https://www.gencodegenes.org/pages/faq.html",
+          "title": "GENCODE FAQ: Basic and Comprehensive annotation",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "not_for"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "ensembl",
+        "hgnc"
+      ],
+      "key_data": [
+        "Comprehensive and Basic tiers: GTF/GFF3 files offering fuller transcript annotations (Comprehensive) or a representative subset prioritizing full-length coding transcripts (Basic).",
+        "Reference matching: Release-specific annotations and transcript/protein sequences for selected assembly scopes, including reference chromosomes or primary assemblies.",
+        "Isoform prioritization tags: Transcript biotypes, MANE Select and MANE Plus Clinical canonical transcripts, APPRIS principal isoforms, and Transcript Support Levels.",
+        "Non-coding and pseudogene models: Curated long non-coding RNA annotations expanded by long-read sequencing alongside processed, unprocessed, and unitary pseudogenes."
+      ]
+    },
+    {
+      "id": "geo",
+      "name": "Gene Expression Omnibus (GEO)",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/",
+      "purpose": "Archives investigator-submitted functional genomics studies across species, pairing study metadata and author-processed supplementary files with recomputed bulk RNA-seq count tables.",
+      "question": "Where can I retrieve author-processed matrices, sample perturbation metadata, or recomputed bulk RNA-seq counts for a published functional genomics study?",
+      "categories": [
+        "Archives & standards",
+        "Expression & cell atlases"
+      ],
+      "modalities": [
+        "Bulk RNA-seq",
+        "Single-cell RNA-seq",
+        "Microarray",
+        "ChIP-seq",
+        "ATAC-seq",
+        "Functional genomics"
+      ],
+      "species": [
+        "Multiple species"
+      ],
+      "biological_scope": "Investigator-submitted functional genomics experiments across all organisms, cell lines, primary tissues, and genetic or chemical perturbation designs.",
+      "granularity": [
+        "Study",
+        "Biosample",
+        "Gene"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "NCBI, US National Library of Medicine",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/info/download.html",
+          "note": "E-utilities retrieve record metadata; accession URLs retrieve records"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/info/download.html",
+          "note": "Series files and FTP bulk downloads"
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Unharmonized study archive rather than an integrated cross-study atlas; supplementary files vary widely in genome build, gene identifiers, filtering, and sample metadata completeness.",
+      "sources": [
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/geo/info/overview.html",
+          "title": "GEO overview",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access.web",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/geo/info/download.html",
+          "title": "Download GEO data",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access.api",
+            "access.bulk"
+          ]
+        },
+        {
+          "url": "https://ncbi.nlm.nih.gov/gds/",
+          "title": "GEO DataSets",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "biological_scope",
+            "key_data",
+            "maintainer"
+          ]
+        },
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/geo/info/rnaseqcounts.html",
+          "title": "NCBI-generated RNA-seq count data in GEO",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "modalities",
+            "not_for"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "sra"
+      ],
+      "key_data": [
+        "Study hierarchy: Linked Series, biological Sample records with treatment and perturbation descriptions, and Platform definitions across sequencing and microarray assays.",
+        "Author supplements: Study-specific processed matrices including single-cell counts, CRISPR screen readouts, chromatin peaks, and spatial transcriptomics tables.",
+        "Recomputed bulk counts: Uniformly generated raw and normalized gene count tables for eligible public human and mouse bulk RNA-seq studies."
+      ]
+    },
+    {
+      "id": "gene-ontology",
+      "name": "Gene Ontology (GO)",
+      "url": "https://geneontology.org/",
+      "purpose": "Controlled vocabulary and evidence-graded annotation framework linking gene products to molecular functions, biological processes, and cellular locations across species.",
+      "question": "Which molecular activities, biological processes, or cellular components are enriched in my responder genes, and are those annotations experimental or computationally inferred?",
+      "categories": [
+        "Archives & standards",
+        "Pathways & interactions"
+      ],
+      "modalities": [
+        "Ontology",
+        "Functional annotations",
+        "Pathway annotations"
+      ],
+      "species": [
+        "Multiple species"
+      ],
+      "biological_scope": "Pan-taxonomic coverage of proteins and non-coding RNAs across eukaryotes, prokaryotes, and viruses; experimental curation is richest in human and model organisms, while other taxa rely more on phylogenetic and electronic inference.",
+      "granularity": [
+        "Gene product",
+        "Ontology term"
+      ],
+      "resource_type": "standard",
+      "maintainer": "Gene Ontology Consortium",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://geneontology.org/",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://geneontology.org/docs/tools-guide/",
+          "note": "GO API documentation for ontology, annotations and GO-CAMs."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://geneontology.org/docs/download-go-annotations/",
+          "note": "Download annotation files and the matching ontology version."
+        }
+      },
+      "licensing": {
+        "summary": "CC BY 4.0 for GO data products; software has separate licenses.",
+        "source_url": "https://geneontology.org/docs/go-citation-policy/"
+      },
+      "not_for": "Captures static functional potential rather than sample-level pathway activity; enrichment results are sensitive to annotation density, study bias, term depth, and how experimental versus inferred evidence codes are weighted.",
+      "sources": [
+        {
+          "url": "https://geneontology.org/",
+          "title": "Gene Ontology Resource",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://geneontology.org/docs/download-go-annotations/",
+          "title": "Download annotations",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "biological_scope",
+            "key_data",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://geneontology.org/docs/tools-guide/",
+          "title": "Programmatic Access to Gene Ontology",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access"
+          ]
+        },
+        {
+          "url": "https://geneontology.org/docs/go-citation-policy/",
+          "title": "GO citation policy and license",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "licensing"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "reactome",
+        "msigdb"
+      ],
+      "key_data": [
+        "Three ontology aspects: Structured graphs covering Molecular Function, Biological Process, and Cellular Component connected by formal semantic relationships.",
+        "Evidence-graded annotations: Gene-to-term assertions paired with qualifiers, citations, and evidence codes distinguishing experimental assays from phylogenetic or electronic inference.",
+        "Causal activity models: Directed GO-CAM pathway models linking individual molecular functions into causal regulatory networks with upstream and downstream relationships."
+      ]
+    },
+    {
+      "id": "gnomad",
+      "name": "Genome Aggregation Database (gnomAD)",
+      "url": "https://gnomad.broadinstitute.org/",
+      "purpose": "Aggregates harmonized human exome and genome sequencing cohorts to provide ancestry-stratified variant allele frequencies and gene-level evolutionary constraint metrics.",
+      "question": "What is a human variant's allele frequency across ancestry groups, and how intolerant is my target gene to loss-of-function or missense variation?",
+      "categories": [
+        "Genes & genomes",
+        "Disease & drug discovery"
+      ],
+      "modalities": [
+        "Population variants",
+        "Genetic constraint",
+        "DNA sequencing",
+        "Genomics"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Human germline coding and non-coding variation aggregated from population biobanks and adult disease cohorts across major genetic ancestry groups, with sample composition varying across releases and callsets.",
+      "granularity": [
+        "Variant",
+        "Gene",
+        "Population cohort"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "gnomAD consortium",
+      "scale": {
+        "summary": "Historical v4.0: 807,162 individuals, comprising 730,947 exomes and 76,215 genomes.",
+        "as_of": "2023-11-01",
+        "source_url": "https://gnomad.broadinstitute.org/news/2023-11-gnomad-v4-0/"
+      },
+      "release": {
+        "label": "gnomAD v4.1.2 constraint correction",
+        "date": "2026-09-28",
+        "source_url": "https://gnomad.broadinstitute.org/news/2026-09-gnomad-v4-1-2/",
+        "note": "Corrects constraint ranks and bins; variant frequencies and underlying constraint values are unchanged from v4.1.1."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://gnomad.broadinstitute.org/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "unknown",
+          "url": null,
+          "note": "Not verified"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://gnomad.broadinstitute.org/downloads",
+          "note": "Variant files and gene-constraint tables"
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Provides aggregate allele counts without individual-level genotypes or linked clinical phenotypes; variant presence in gnomAD does not rule out reduced-penetrance, recessive, or adult-onset pathogenicity.",
+      "sources": [
+        {
+          "url": "https://gnomad.broadinstitute.org/news/2023-11-gnomad-v4-0/",
+          "title": "gnomAD v4.0 release",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access.web",
+            "access.bulk",
+            "scale",
+            "not_for",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://gnomad.broadinstitute.org/news/2026-09-gnomad-v4-1-2/",
+          "title": "gnomAD v4.1.2 release",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "release",
+            "access.bulk",
+            "modalities"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "clinvar",
+        "open-targets",
+        "gwas-catalog"
+      ],
+      "key_data": [
+        "Population frequencies: Global and genetic-ancestry-stratified allele counts, allele frequencies, and homozygote counts across large exome and genome releases.",
+        "Selective constraint: Transcript- and gene-level intolerance metrics for loss-of-function and missense variation, including LOEUF, pLI, and regional missense constraint.",
+        "Variant callsets: Short variants, structural variants, copy-number variants, mitochondrial variants, and tandem repeats accompanied by base-level sequencing coverage tracks."
+      ]
+    },
+    {
+      "id": "gdc-tcga",
+      "name": "Genomic Data Commons (including TCGA)",
+      "url": "https://portal.gdc.cancer.gov/",
+      "purpose": "Harmonizes multi-program cancer patient cohorts, including TCGA, linking somatic alterations, bulk transcriptomes, methylomes, and clinical outcomes across shared cases.",
+      "question": "How do somatic mutations, copy-number alterations, or bulk gene expression stratify patient survival and molecular subtypes across primary human tumor cohorts?",
+      "categories": [
+        "Disease & drug discovery"
+      ],
+      "modalities": [
+        "DNA sequencing",
+        "Bulk RNA-seq",
+        "DNA methylation",
+        "Proteomics",
+        "Clinical annotations",
+        "Multi-omics"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Human cancer cohorts across multiple NCI programs, including 33 TCGA tumor types plus CPTAC, TARGET, MMRF, and BeatAML, with assay coverage varying by case.",
+      "granularity": [
+        "Patient",
+        "Biosample",
+        "Gene",
+        "Variant"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "US National Cancer Institute",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://portal.gdc.cancer.gov/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://gdc.cancer.gov/developers/gdc-application-programming-interface-api",
+          "note": "Documented query and retrieval API"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://gdc.cancer.gov/access-data/gdc-data-transfer-tool",
+          "note": "Data Transfer Tool for selected files"
+        }
+      },
+      "licensing": {
+        "summary": "Some data are controlled: eRA Commons authentication and dbGaP authorization are required. Dataset reuse terms must be checked.",
+        "source_url": "https://gdc.cancer.gov/access-data/obtaining-access-controlled-data"
+      },
+      "not_for": "Observational cohorts do not establish perturbation responses. Bulk measurements mix cell types; deconvolution estimates composition rather than providing measured single-cell profiles, and assay coverage varies by case.",
+      "sources": [
+        {
+          "url": "https://gdc.cancer.gov/about-gdc",
+          "title": "About the GDC",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "access",
+            "maintainer",
+            "modalities",
+            "biological_scope"
+          ]
+        },
+        {
+          "url": "https://www.cancer.gov/ccg/research/genome-sequencing/tcga",
+          "title": "The Cancer Genome Atlas Program",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "biological_scope",
+            "species",
+            "not_for",
+            "purpose",
+            "question"
+          ]
+        },
+        {
+          "url": "https://gdc.cancer.gov/access-data/obtaining-access-controlled-data",
+          "title": "Obtaining access to controlled GDC data",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "licensing",
+            "access"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [],
+      "key_data": [
+        "Somatic variants: Harmonized whole-exome and whole-genome somatic mutation calls and copy-number segments, with matched tumor-normal pairs where available.",
+        "Transcriptome profiles: Uniformly quantified bulk RNA-seq gene expression, splice junctions, candidate transcript fusions, and miRNA expression across assayed tumor biospecimens.",
+        "Epigenetics and proteomics: Harmonized DNA methylation array beta values and targeted reverse-phase protein array measurements for subsets of patient samples.",
+        "Clinical graph: Standardized metadata linking patient demographics, tumor stage, histology, treatments, and survival outcomes to multi-omic sample aliquots."
+      ]
+    },
+    {
+      "id": "gtex",
+      "name": "GTEx",
+      "url": "https://gtexportal.org/",
+      "purpose": "Links donor-matched genotypes to multi-tissue bulk RNA-seq expression and splicing across up to 54 non-diseased human tissues, plus an 8-tissue snRNA-seq subset.",
+      "question": "Does an inherited variant regulate my target gene's expression or splicing across baseline human tissues, and which cell types express it?",
+      "categories": [
+        "Expression & cell atlases",
+        "Genes & genomes"
+      ],
+      "modalities": [
+        "Bulk RNA-seq",
+        "Single-nucleus RNA-seq",
+        "Genotyping",
+        "Expression quantitative trait loci",
+        "Splicing quantitative trait loci"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Post-mortem adult human baseline reference spanning up to 54 non-diseased tissues across nearly 1,000 genotyped donors for bulk RNA-seq, plus a distinct 8-tissue, 16-donor single-nucleus RNA-seq subcollection.",
+      "granularity": [
+        "Tissue",
+        "Donor",
+        "Gene",
+        "Variant",
+        "Nucleus",
+        "Transcript"
+      ],
+      "resource_type": "primary",
+      "maintainer": "GTEx Consortium; Broad Institute portal",
+      "scale": {
+        "summary": "V10: 19,788 RNA-seq samples across 54 tissue sites from 946 donors. Separate 2022 single-nucleus atlas: 209,126 nuclei, 8 tissues, 16 donors.",
+        "as_of": "2026-10-22",
+        "source_url": "https://www.gtexportal.org/home/tissueSummaryPage"
+      },
+      "release": {
+        "label": "V11 adult analysis reannotation",
+        "date": null,
+        "source_url": "https://www.gtexportal.org/home/downloads/adult-gtex",
+        "note": "Official downloads describe GENCODE v47 reannotation of V10 with no new donors or samples. Exact substantive release date not confirmed; a filename timestamp is not used as a release date."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://gtexportal.org/",
+          "note": "Explore expression and QTL summaries in the portal; browser requires JavaScript."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://gtexportal.org/home/apiPage",
+          "note": "Official documentation specifies API v2 for public expression, QTL, annotation, and phenotype queries; serial low-throughput queries only."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://gtexportal.org/home/downloads/adult-gtex/",
+          "note": "Public expression files are downloadable; genotypes and raw RNA sequence require approved dbGaP access, with protected data in AnVIL."
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Bulk/QTL cohorts and the single-nucleus subset differ in coverage; tissues are unevenly sampled per donor. Genetic associations do not establish experimental perturbation responses.",
+      "sources": [
+        {
+          "url": "https://commonfund.nih.gov/GTEx",
+          "title": "NIH GTEx program archive",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access"
+          ]
+        },
+        {
+          "url": "https://www.gtexportal.org/home/faq",
+          "title": "GTEx frequently asked questions",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "purpose",
+            "key_data",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://gtexportal.org/home/apiPage",
+          "title": "GTEx programmatic access",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "access",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.gtexportal.org/",
+          "title": "GTEx Portal overview",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "biological_scope",
+            "maintainer",
+            "access"
+          ]
+        },
+        {
+          "url": "https://www.gtexportal.org/home/aboutAdultGtex",
+          "title": "About Adult GTEx",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "modalities",
+            "biological_scope",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9383269/",
+          "title": "Single-nucleus cross-tissue molecular reference maps toward understanding disease gene function (Eraslan et al. 2022)",
+          "type": "paper",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "question",
+            "modalities",
+            "biological_scope",
+            "not_for",
+            "scale"
+          ]
+        },
+        {
+          "url": "https://www.gtexportal.org/home/downloads/adult-gtex",
+          "title": "Adult GTEx Downloads",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "biological_scope",
+            "release"
+          ]
+        },
+        {
+          "url": "https://www.gtexportal.org/home/tissueSummaryPage",
+          "title": "GTEx V10 analysis sample and donor summary",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "scale",
+            "key_data"
+          ]
+        },
+        {
+          "url": "https://cells.ucsc.edu/?ds=cross-tissue-maps",
+          "title": "GTEx single-nucleus cross-tissue maps in UCSC Cell Browser",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "granularity"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "cellxgene",
+        "encode"
+      ],
+      "key_data": [
+        "Donor-linked bulk tissues: Bulk RNA-seq across up to 54 non-diseased tissues joined by donor ID, with uneven tissue sampling per donor.",
+        "Regulatory QTLs: Whole-genome donor genotypes paired with tissue-specific cis- and trans-eQTL and splicing QTL (sQTL) summary statistics.",
+        "Multi-resolution matrices: Gene, transcript-isoform, and exon-junction bulk expression tables provided alongside donor demographic and technical covariates.",
+        "Single-nucleus subset: Separately scoped snRNA-seq subcollection profiling over 200,000 nuclei across 8 frozen tissue types from 16 donors."
+      ]
+    },
+    {
+      "id": "hgnc",
+      "name": "HGNC gene nomenclature",
+      "url": "https://www.genenames.org/",
+      "purpose": "Official nomenclature authority assigning unique approved symbols, names, locus types, and stable identifiers to human protein-coding genes, non-coding RNAs, and pseudogenes.",
+      "question": "How do I resolve outdated or alias gene symbols in a single-cell matrix or CRISPR library to unique human genes and IDs?",
+      "categories": [
+        "Genes & genomes",
+        "Archives & standards"
+      ],
+      "modalities": [
+        "Nomenclature",
+        "Gene identifiers",
+        "Gene annotations"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Exclusively human genomic loci across protein-coding genes, non-coding RNAs, and pseudogenes; vertebrate ortholog nomenclature is coordinated separately via VGNC and species-specific authorities such as MGI.",
+      "granularity": [
+        "Gene",
+        "Identifier"
+      ],
+      "resource_type": "standard",
+      "maintainer": "HUGO Gene Nomenclature Committee",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.genenames.org/",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.genenames.org/help/rest/",
+          "note": "REST search and fetch; documented rate limit of 10 requests per second."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.genenames.org/download/",
+          "note": "Complete HGNC datasets and subsets in TSV/JSON."
+        }
+      },
+      "licensing": {
+        "summary": "CC0; attribution recommended.",
+        "source_url": "https://hgnc.genenames.org/about/license/"
+      },
+      "not_for": "Provides nomenclature and identifier crosswalks rather than genomic coordinates or transcript structures; mapping alias symbols blindly without checking approved and previous symbol collisions can merge distinct genes.",
+      "sources": [
+        {
+          "url": "https://www.genenames.org/about/",
+          "title": "About the HGNC",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://www.genenames.org/download/",
+          "title": "HGNC download files overview",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "key_data",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://www.genenames.org/help/rest/",
+          "title": "HGNC REST web-service help",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "key_data"
+          ]
+        },
+        {
+          "url": "https://hgnc.genenames.org/about/license/",
+          "title": "HGNC License Agreement",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "licensing"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "gencode",
+        "ensembl",
+        "uniprot"
+      ],
+      "key_data": [
+        "Approved identifiers: Lookup tables mapping each human locus to a stable HGNC ID, unique approved symbol, full name, and cytogenetic location.",
+        "Symbol history: Explicitly separated formerly approved symbols and literature alias synonyms for resolving mismatched gene labels across multi-cohort datasets.",
+        "Locus and family groups: Classifications distinguishing protein-coding genes, non-coding RNA classes, and pseudogenes alongside homology- or function-based gene families.",
+        "Database cross-references: Authoritative identifier mappings connecting human genes to Ensembl, NCBI Gene, RefSeq, UniProt, and OMIM."
+      ]
+    },
+    {
+      "id": "hubmap",
+      "name": "HuBMAP",
+      "url": "https://portal.hubmapconsortium.org/",
+      "purpose": "Maps healthy human organs using single-cell sequencing, spatial transcriptomics, and multiplexed imaging linked to donor provenance and 3D anatomical coordinates where applicable.",
+      "question": "How are cell types, chromatin states, and protein markers spatially organized within healthy human tissue blocks and registered anatomical coordinates?",
+      "categories": [
+        "Expression & cell atlases",
+        "Regulation & epigenomics"
+      ],
+      "modalities": [
+        "Single-cell RNA-seq",
+        "Single-nucleus RNA-seq",
+        "Single-cell ATAC-seq",
+        "Spatial transcriptomics",
+        "Spatial imaging",
+        "Proteomics"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Non-diseased adult human organs profiled across HuBMAP tissue mapping centers; individual donors and tissue blocks carry specific assay subsets rather than every modality or 3D registration on the same sample.",
+      "granularity": [
+        "Cell",
+        "Tissue",
+        "Spatial region",
+        "Donor"
+      ],
+      "resource_type": "primary",
+      "maintainer": "HuBMAP Consortium",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://portal.hubmapconsortium.org/",
+          "note": "Browse and visualize public datasets; some sequencing data are restricted."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://docs.hubmapconsortium.org/apis",
+          "note": "Documented REST search/metadata services; data transfer uses Globus, with permissions appropriate to each dataset."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://docs.hubmapconsortium.org/how-to-access-data.html",
+          "note": "Download published open data through portal/Globus or the command-line transfer workflow; raw genetic data require NIH/dbGaP approval."
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Designed for healthy baseline tissue architecture rather than disease-versus-control cohorts or perturbation screens; assay coverage, processing pipelines, and 3D coordinate registration vary across organs and tissue blocks.",
+      "sources": [
+        {
+          "url": "https://docs.hubmapconsortium.org/about.html",
+          "title": "About HuBMAP",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "maintainer",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://docs.hubmapconsortium.org/how-to-access-data.html",
+          "title": "Access and download HuBMAP data",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access"
+          ]
+        },
+        {
+          "url": "https://docs.hubmapconsortium.org/apis",
+          "title": "HuBMAP APIs",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "access",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://portal.hubmapconsortium.org/",
+          "title": "HuBMAP Data Portal",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "modalities"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "human-cell-atlas",
+        "cellxgene",
+        "human-protein-atlas"
+      ],
+      "key_data": [
+        "Multiplexed spatial imaging: Antibody-based and mass-spectrometry imaging datasets providing high-resolution images, cell segmentations, and spatial neighborhood graphs in assayed tissue blocks.",
+        "Spatial and dissociated omics: Spatial transcriptomics alongside dissociated scRNA-seq, snRNA-seq, scATAC-seq, and multiome profiles processed with assay-appropriate pipelines.",
+        "Anatomical provenance: Donor, biosample, and tissue-block metadata paired with 3D Common Coordinate Framework registration and anatomical-cell-biomarker tables where supported."
+      ]
+    },
+    {
+      "id": "human-cell-atlas",
+      "name": "Human Cell Atlas Data Portal",
+      "url": "https://data.humancellatlas.org/",
+      "purpose": "Distributes project-level human single-cell and multi-omic datasets, providing raw reads, uniformly reprocessed Data Coordination Platform matrices, and author-annotated contributor matrices.",
+      "question": "Which primary human tissue studies offer raw reads, uniformly quantified DCP matrices, or author-annotated matrices to build or benchmark an organ atlas?",
+      "categories": [
+        "Expression & cell atlases"
+      ],
+      "modalities": [
+        "Single-cell RNA-seq",
+        "Single-nucleus RNA-seq",
+        "Single-cell ATAC-seq",
+        "Spatial transcriptomics",
+        "Multi-omics",
+        "Sequencing reads"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Mus musculus"
+      ],
+      "biological_scope": "Project-organized human tissue and organ studies across HCA biological networks (plus selected comparative mouse datasets); assay chemistry, anatomical sampling, and matrix availability vary across contributing projects.",
+      "granularity": [
+        "Cell",
+        "Tissue",
+        "Donor"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "Human Cell Atlas",
+      "scale": {
+        "summary": "Portal displayed 70.9 million cells, 11.3 thousand donors, and 532 projects; observed catalog counts, not a release size.",
+        "as_of": "2026-10-22",
+        "source_url": "https://data.humancellatlas.org/"
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://data.humancellatlas.org/",
+          "note": "Browse official resource."
+        },
+        "api": {
+          "status": "unknown",
+          "url": null,
+          "note": "Not verified."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://explore.data.humancellatlas.org/export",
+          "note": "Export files with curl commands/manifests or to Terra; controlled projects require DUOS approval and authentication."
+        }
+      },
+      "licensing": {
+        "summary": "Export page specifies CC BY 4.0 and HCA data-use policy; managed-tier data additionally require approved access.",
+        "source_url": "https://explore.data.humancellatlas.org/export"
+      },
+      "not_for": "Does not provide a single batch-integrated cross-study atlas out of the box; DCP pipelines standardize read quantification for supported assays without removing study batch effects, and contributor cell-type vocabularies vary across projects.",
+      "sources": [
+        {
+          "url": "https://data.humancellatlas.org/",
+          "title": "HCA Data Portal",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "biological_scope",
+            "scale",
+            "access",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://data.humancellatlas.org/guides/consumer-vignettes/matrices",
+          "title": "HCA matrix guide",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "biological_scope",
+            "species",
+            "access",
+            "not_for",
+            "purpose",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://explore.data.humancellatlas.org/export",
+          "title": "HCA data export",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "licensing",
+            "key_data"
+          ]
+        },
+        {
+          "url": "https://data.humancellatlas.org/guides/requesting-access-to-controlled-access-data",
+          "title": "HCA controlled-access guide",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "licensing",
+            "key_data"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "cellxgene",
+        "hubmap"
+      ],
+      "key_data": [
+        "DCP-processed matrices: Uniformly aligned and quantified count matrices with standardized quality metrics generated from raw reads for supported assay types.",
+        "Contributor matrices: Author-submitted expression tables preserving study-specific processing, clusterings, and cell-type labels, which vary in ontology standardization across projects.",
+        "Raw sequence access: FASTQ and BAM files alongside harmonized donor, organ, dissociation protocol, and library metadata under open or managed access."
+      ]
+    },
+    {
+      "id": "human-protein-atlas",
+      "name": "Human Protein Atlas",
+      "url": "https://www.proteinatlas.org/",
+      "purpose": "Integrates antibody-based tissue immunohistochemistry and subcellular immunofluorescence with mass spectrometry and normalized bulk and single-cell RNA-seq across modular human protein sub-atlases.",
+      "question": "Where is my target protein localized across normal human organs, tumors, and organelles, and how does staining compare with cell-type RNA expression?",
+      "categories": [
+        "Proteins & structures",
+        "Expression & cell atlases"
+      ],
+      "modalities": [
+        "Protein imaging",
+        "Proteomics",
+        "Mass spectrometry",
+        "Bulk RNA-seq",
+        "Single-cell RNA-seq"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Gene-centric human proteome and transcriptome reference organized into sub-atlases covering normal organs, single-cell clusters, subcellular organelles, cell lines, blood plasma, immune cells, brain regions, and cancers.",
+      "granularity": [
+        "Protein",
+        "Gene",
+        "Cell type",
+        "Tissue",
+        "Subcellular compartment"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "Human Protein Atlas program",
+      "scale": {
+        "summary": "Version 25.1 download table lists IHC protein-expression data for 15,312 genes across 45 normal tissues; one component, not total atlas coverage.",
+        "as_of": "2026-10-22",
+        "source_url": "https://www.proteinatlas.org/about/download"
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Download page identifies version 25.1, but its substantive release date was not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.proteinatlas.org/",
+          "note": "Browse official resource."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.proteinatlas.org/about/help/dataaccess",
+          "note": "Retrieve individual entries or search subsets in XML, TSV, or JSON through documented URL interfaces."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.proteinatlas.org/about/download",
+          "note": "Download resource-specific tables and whole-atlas XML/TSV/JSON exports."
+        }
+      },
+      "licensing": {
+        "summary": "CC BY 4.0 for copyrightable HPA database content; incorporated third-party data can carry additional restrictions.",
+        "source_url": "https://www.proteinatlas.org/about/licence"
+      },
+      "not_for": "RNA expression summaries and antibody staining generally come from different specimens and cohorts, antibody specificity varies by validation tier, and portal tables provide cluster summaries rather than perturbation matrices.",
+      "sources": [
+        {
+          "url": "https://www.proteinatlas.org/about",
+          "title": "HPA introduction",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://www.proteinatlas.org/about/download",
+          "title": "HPA downloadable data",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "biological_scope",
+            "access",
+            "scale",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.proteinatlas.org/about/help/dataaccess",
+          "title": "HPA programmatic data access",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access"
+          ]
+        },
+        {
+          "url": "https://www.proteinatlas.org/about/licence",
+          "title": "HPA licence and citation",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "licensing"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "gtex",
+        "hubmap",
+        "cellxgene"
+      ],
+      "key_data": [
+        "Tissue and cancer staining: Immunohistochemistry tissue microarrays scoring protein abundance and cellular distribution across normal human organs and major cancer types.",
+        "Subcellular localization: High-resolution confocal immunofluorescence microscopy mapping proteins to specific organelles and structures in cultured human cell lines.",
+        "Multi-resolution transcriptomics: Cross-dataset normalized RNA expression summaries spanning whole organs, single-cell type clusters, brain regions, immune cells, and cell lines.",
+        "Blood and disease context: Plasma proteomics, immune-cell expression summaries, and cancer expression-survival associations from distinct datasets."
+      ]
+    },
+    {
+      "id": "jaspar",
+      "name": "JASPAR",
+      "url": "https://jaspar.elixir.no/",
+      "purpose": "Curates non-redundant eukaryotic transcription factor DNA-binding motifs alongside unvalidated candidate motifs and sequence-based binding models.",
+      "question": "Which experimentally curated transcription factor motifs or sequence models can scan accessible chromatin peaks or score non-coding variant effects on binding preference?",
+      "categories": [
+        "Regulation & epigenomics"
+      ],
+      "modalities": [
+        "DNA-binding motifs",
+        "Binding models",
+        "Functional annotations"
+      ],
+      "species": [
+        "Eukaryotes"
+      ],
+      "biological_scope": "Eukaryotic transcription factors across six major taxonomic groups: vertebrates, plants, insects, fungi, nematodes, and urochordates.",
+      "granularity": [
+        "Transcription factor",
+        "Motif"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "Collaborating JASPAR research laboratories",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "JASPAR 2026, eleventh release",
+        "date": null,
+        "source_url": "https://jaspar.elixir.no/",
+        "note": "Release label verified; exact substantive release date not established. Changelog metadata corrections are not used as release dates."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://jaspar.elixir.no/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://jaspar.elixir.no/api/v1/",
+          "note": "REST API linked from official home page"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://jaspar.elixir.no/downloads/",
+          "note": "Batch motif files in JASPAR, MEME and TRANSFAC formats"
+        }
+      },
+      "licensing": {
+        "summary": "CC BY 4.0.",
+        "source_url": "https://jaspar.elixir.no/"
+      },
+      "not_for": "Motif matches reflect DNA sequence preference rather than direct thermodynamic affinity measurements or proof of in vivo occupancy; cell-type-specific binding requires pairing with chromatin accessibility or ChIP data.",
+      "sources": [
+        {
+          "url": "https://jaspar.elixir.no/",
+          "title": "JASPAR home and CORE description",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access.web",
+            "access.api",
+            "maintainer",
+            "licensing",
+            "release",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://jaspar.elixir.no/downloads/",
+          "title": "JASPAR downloads",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "access.bulk",
+            "modalities"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [],
+      "key_data": [
+        "Curated CORE motifs: Manually curated, non-redundant position frequency matrices backed by orthogonal experimental evidence from ChIP, HT-SELEX, or protein-binding microarrays.",
+        "Unvalidated collection: Separate quality-controlled candidate motifs from high-throughput screens awaiting independent orthogonal confirmation.",
+        "Predictive models: Deep-learning sequence binding models, genome-wide predicted binding site tracks, and transcription factor structural family and dimerization metadata."
+      ]
+    },
+    {
+      "id": "lincs-cmap",
+      "name": "LINCS / Connectivity Map (archived L1000)",
+      "url": "https://clue.io/connectopedia/guide_to_geo_l1000_data",
+      "purpose": "Provides archival bulk L1000 transcriptional perturbation profiles and signatures across small molecules, shRNAs, CRISPR knockouts, and cDNA overexpressions in human cell lines.",
+      "question": "Which small molecule, shRNA, CRISPR knockout, or cDNA overexpression induces a bulk landmark-gene signature that mimics or reverses my query transcriptional state?",
+      "categories": [
+        "Perturbation & dependencies",
+        "Disease & drug discovery"
+      ],
+      "modalities": [
+        "L1000 expression profiling",
+        "Expression-derived signatures",
+        "Drug perturbations",
+        "Genetic perturbations"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Archival Connectivity Map LINCS Phase I and II bulk perturbation assays in human cell lines across chemical and genetic perturbations, now accessed via public repositories following CLUE web portal retirement in January 2026.",
+      "granularity": [
+        "Cell-line condition",
+        "Gene",
+        "Expression signature"
+      ],
+      "resource_type": "primary",
+      "maintainer": "Broad Institute Connectivity Map team",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://clue.io/connectopedia/guide_to_geo_l1000_data",
+          "note": "Documentation and GEO archive links remain discoverable; CLUE announces retirement of its site/tools effective 2026-01-31."
+        },
+        "api": {
+          "status": "unknown",
+          "url": null,
+          "note": "Legacy CLUE API availability is not asserted after the announced retirement."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://clue.io/connectopedia/guide_to_geo_l1000_data",
+          "note": "Official guide links GEO GSE92742 and GSE70138 with GCTx matrices and metadata; direct GEO inspection encountered a browser challenge."
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Bulk hybridization assay without single-cell or isoform resolution where over 90% of genes are imputed from 978 landmarks, and the hosted CLUE query portal retired in January 2026.",
+      "sources": [
+        {
+          "url": "https://clue.io/connectopedia/cmap_overview",
+          "title": "Connectivity Map overview",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "biological_scope",
+            "question"
+          ]
+        },
+        {
+          "url": "https://clue.io/connectopedia/l1000_gene_space",
+          "title": "L1000 measured and inferred gene space",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "not_for",
+            "purpose",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://clue.io/connectopedia/guide_to_geo_l1000_data",
+          "title": "Guide to LINCS L1000 GEO releases",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "purpose",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://clue.io/data/terms",
+          "title": "CLUE retirement announcement",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "not_for"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "depmap",
+        "tahoe-100m",
+        "scperturb"
+      ],
+      "key_data": [
+        "Measured vs inferred transcripts: Directly measures 978 landmark transcripts and computationally infers over 10,000 additional genes, including a higher-accuracy inferred subset.",
+        "Multi-modal perturbagens: Small-molecule compounds, shRNA knockdowns, CRISPR knockouts, and cDNA overexpressions profiled across core human cancer and immortalized cell lines.",
+        "Processed signature tiers: Public GEO matrices providing normalized profiles, plate-control z-scores, and replicate-collapsed consensus perturbation signatures with dose and timepoint metadata."
+      ]
+    },
+    {
+      "id": "msigdb",
+      "name": "Molecular Signatures Database (MSigDB)",
+      "url": "https://www.gsea-msigdb.org/gsea/msigdb",
+      "purpose": "Curated and computationally derived collection of human and mouse gene sets organized into thematic collections for enrichment analysis and signature scoring.",
+      "question": "Which biological hallmarks, chemical or genetic perturbation signatures, regulatory target sets, or cell-type marker sets are enriched in my differential expression profile?",
+      "categories": [
+        "Pathways & interactions"
+      ],
+      "modalities": [
+        "Gene sets",
+        "Expression-derived signatures",
+        "Pathway annotations",
+        "Functional annotations"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Mus musculus"
+      ],
+      "biological_scope": "Human and mouse gene sets spanning literature-derived bulk perturbation signatures, canonical pathways, cis-regulatory target predictions, oncogenic and immune states, and single-cell cluster markers.",
+      "granularity": [
+        "Gene set",
+        "Gene"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "UC San Diego and Broad Institute",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "Human 2026.2.Hs; Mouse 2026.2.Mm (October 2026)",
+        "date": null,
+        "source_url": "https://www.gsea-msigdb.org/gsea/msigdb",
+        "note": "Official overview gives October 2026 but no exact day; date remains unknown."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.gsea-msigdb.org/gsea/msigdb",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "unknown",
+          "url": null,
+          "note": "API availability not verified."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.gsea-msigdb.org/gsea/downloads.jsp",
+          "note": "Gene-set downloads require free registration and email login."
+        }
+      },
+      "licensing": {
+        "summary": "Creative Commons-style terms plus additional terms for some gene sets; inspect the linked agreement.",
+        "source_url": "https://www.gsea-msigdb.org/gsea/license_terms_list.jsp"
+      },
+      "not_for": "Gene-set membership does not measure pathway activity or prove upstream causality. Check collection provenance, species, gene universe, and whether an up/down signature matches your question.",
+      "sources": [
+        {
+          "url": "https://www.gsea-msigdb.org/gsea/msigdb",
+          "title": "MSigDB overview",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "release",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://www.gsea-msigdb.org/gsea/license_terms_list.jsp",
+          "title": "MSigDB license terms",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "licensing"
+          ]
+        },
+        {
+          "url": "https://www.gsea-msigdb.org/gsea/login.jsp",
+          "title": "GSEA and MSigDB login",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "gene-ontology",
+        "reactome"
+      ],
+      "key_data": [
+        "Hallmark and ontology sets: Non-redundant Hallmark biological states, positional cytogenetic bands, and Gene Ontology or phenotype-derived gene sets.",
+        "Pathways and perturbations: Curated canonical pathways separated from literature-derived chemical and genetic perturbation expression signatures, often split by direction.",
+        "Regulatory and lineage collections: Transcription factor and miRNA target sets, oncogenic and immunologic signatures, and single-cell cell-type marker sets.",
+        "Native mouse collections: Dedicated mouse gene sets built from mouse experiments and curated orthology mappings without ad hoc symbol conversion."
+      ]
+    },
+    {
+      "id": "gwas-catalog",
+      "name": "NHGRI-EBI GWAS Catalog",
+      "url": "https://www.ebi.ac.uk/gwas/",
+      "purpose": "Curates published human genome-wide variant-trait associations and distributes available genome-wide summary statistics mapped to standardized trait ontology terms.",
+      "question": "Which genetic loci are associated with a human trait or disease, and are genome-wide summary statistics available for colocalization or fine-mapping?",
+      "categories": [
+        "Disease & drug discovery",
+        "Genes & genomes"
+      ],
+      "modalities": [
+        "GWAS associations",
+        "GWAS summary statistics",
+        "Genetic associations",
+        "Population variants"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Human population and case-control genome-wide association studies spanning clinical diseases, quantitative biomarkers, molecular traits, and behavioral phenotypes across diverse ancestries.",
+      "granularity": [
+        "Variant",
+        "Trait",
+        "Study"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "NHGRI and EMBL-EBI, with collaborating institutions",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.ebi.ac.uk/gwas/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.ebi.ac.uk/gwas/docs/programmatic-access/",
+          "note": "Programmatic-access services documented by the Catalog"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.ebi.ac.uk/gwas/docs/downloads/",
+          "note": "Catalog tables and submitted summary-statistics files"
+        }
+      },
+      "licensing": {
+        "summary": "EMBL-EBI terms apply; summary statistics are CC0 unless otherwise stated. Check individual dataset terms.",
+        "source_url": "https://www.ebi.ac.uk/gwas/docs/about/"
+      },
+      "not_for": "Tag-variant associations within linkage disequilibrium blocks do not pinpoint causal variants, effector genes, or cell types; full or harmonized summary statistics are available only for a subset of studies.",
+      "sources": [
+        {
+          "url": "https://www.ebi.ac.uk/gwas/docs/about/",
+          "title": "About the GWAS Catalog",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "licensing",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://www.ebi.ac.uk/gwas/docs/methods/criteria/",
+          "title": "GWAS Catalog inclusion criteria",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "not_for"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [],
+      "key_data": [
+        "Lead associations: Literature-curated variant-trait associations reporting genomic coordinates, effect alleles, effect sizes, p-values, and author-reported candidate genes.",
+        "Summary statistics: Deposited genome-wide summary statistics for a subset of studies, with standardized GRCh38 harmonization available where processing succeeded.",
+        "Cohort metadata: Structured discovery and replication sample sizes, genetic ancestry categories, genotyping platform details, and Experimental Factor Ontology trait mappings."
+      ]
+    },
+    {
+      "id": "omnipath",
+      "name": "OmniPath",
+      "url": "https://omnipathdb.org/",
+      "purpose": "Integrates literature-curated and high-throughput molecular interactions into directed signaling networks, transcriptional regulons, enzyme-substrate links, and intercellular ligand-receptor pairs.",
+      "question": "Which directed signaling edges, transcription factor regulons, or ligand-receptor pairs connect my perturbed target to downstream transcriptomic or phosphoproteomic shifts?",
+      "categories": [
+        "Pathways & interactions",
+        "Regulation & epigenomics"
+      ],
+      "modalities": [
+        "Signaling interactions",
+        "Protein interactions",
+        "Enzyme-substrate relations",
+        "Ligand-receptor knowledge",
+        "Post-translational modifications"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Mus musculus",
+        "Rattus norvegicus"
+      ],
+      "biological_scope": "Primarily human molecular prior knowledge, with mouse and rat networks derived largely via orthology translation alongside native rodent annotations.",
+      "granularity": [
+        "Interaction",
+        "Protein",
+        "Complex"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "Saez Lab and Korcsmaros Lab",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://omnipathdb.org/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://r.omnipathdb.org/reference/omnipath_query.html",
+          "note": "HTTP web service with R and Python clients"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://r.omnipathdb.org/reference/omnipath_query.html",
+          "note": "Dataset queries return downloadable tables or JSON"
+        }
+      },
+      "licensing": {
+        "summary": "Original resource licenses carry through; commercial-use filters restrict returned records to compatible sources.",
+        "source_url": "https://omnipathdb.org/"
+      },
+      "not_for": "Context-agnostic prior-knowledge meta-network rather than sample-measured interactions; requires expression or chromatin filtering for cell-type specificity, and rodent edges rely heavily on human homology.",
+      "sources": [
+        {
+          "url": "https://omnipathdb.org/",
+          "title": "OmniPath overview and FAQ",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "access.web",
+            "access.api",
+            "maintainer",
+            "licensing",
+            "not_for",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://r.omnipathdb.org/reference/omnipath_query.html",
+          "title": "OmniPath query documentation",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "biological_scope",
+            "species",
+            "access.api",
+            "access.bulk",
+            "licensing",
+            "key_data",
+            "not_for"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [],
+      "key_data": [
+        "Directed signaling: Signed protein-protein interactions distinguishing activation versus inhibition across curated activity-flow and reaction pathway resources.",
+        "Transcriptional regulons: Confidence-weighted transcription factor and miRNA target networks (including CollecTRI and DoRothEA) for inferring regulator activity from transcriptomes.",
+        "Enzyme-PTM links: Site-specific kinase, phosphatase, and modifying enzyme relationships mapped to substrate residues and post-translational modification types.",
+        "Intercellular communication: Curated ligand-receptor-complex pairs and functional surface/secreted protein roles supporting cell-cell communication inference."
+      ]
+    },
+    {
+      "id": "open-targets",
+      "name": "Open Targets Platform",
+      "url": "https://platform.opentargets.org/",
+      "purpose": "Integrates human genetics, somatic mutations, transcriptomics, pathways, and clinical trial precedence to score and prioritize therapeutic target-disease associations.",
+      "question": "Which human genes have converged genetic fine-mapping, clinical trial precedence, and safety evidence supporting their prioritization as therapeutic targets in a disease?",
+      "categories": [
+        "Disease & drug discovery"
+      ],
+      "modalities": [
+        "Target-disease evidence",
+        "Genetic associations",
+        "Clinical evidence",
+        "Drug-target annotations",
+        "Functional genomics"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Human protein-coding and non-coding gene targets mapped against standardized disease and phenotype ontologies and bioactive drug molecules.",
+      "granularity": [
+        "Gene",
+        "Disease",
+        "Drug",
+        "Variant"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "Open Targets consortium",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://platform.opentargets.org/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://platform-docs.opentargets.org/data-access",
+          "note": "GraphQL API for entities and associations"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://platform-docs.opentargets.org/data-access",
+          "note": "Release downloads and cloud query options"
+        }
+      },
+      "licensing": {
+        "summary": "Open Targets Platform data is marked CC0 1.0; the provider documents source-specific licensing and permissions.",
+        "source_url": "https://platform-docs.opentargets.org/licence"
+      },
+      "not_for": "Evidence aggregator rather than a primary assay repository; composite association scores do not specify required perturbation directionality or cell-state-specific transcriptional response dynamics.",
+      "sources": [
+        {
+          "url": "https://platform-docs.opentargets.org/",
+          "title": "Open Targets Platform documentation",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "access.web",
+            "maintainer",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://platform-docs.opentargets.org/target",
+          "title": "Open Targets target definition",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "biological_scope",
+            "species",
+            "key_data"
+          ]
+        },
+        {
+          "url": "https://platform-docs.opentargets.org/data-access",
+          "title": "Open Targets data and code access",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access.api",
+            "access.bulk"
+          ]
+        },
+        {
+          "url": "https://platform-docs.opentargets.org/licence",
+          "title": "Open Targets Platform data licence",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "licensing"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "chembl",
+        "gwas-catalog",
+        "gnomad",
+        "clinvar"
+      ],
+      "key_data": [
+        "Evidence aggregation: Weighted target-disease association scores combining genetics, somatic alterations, literature mining, animal models, and pathway evidence.",
+        "Causal gene prioritization: Statistical fine-mapping credible sets from GWAS and molecular QTLs paired with machine-learning locus-to-gene predictions.",
+        "Clinical and tractability data: Curated drug mechanisms of action, small-molecule and antibody tractability, safety events, and clinical trial phases.",
+        "Target context: Baseline tissue expression, cancer cell dependency summaries, and ontology-standardized disease hierarchies."
+      ]
+    },
+    {
+      "id": "pdb",
+      "name": "Protein Data Bank (PDB; via RCSB)",
+      "url": "https://www.rcsb.org/",
+      "purpose": "Global primary archive of experimentally determined 3D atomic coordinates for proteins, nucleic acids, macromolecular complexes, and bound ligands with geometric validation.",
+      "question": "Does an experimentally resolved 3D structure exist for my target protein, complex, or drug-binding pocket, and what are its resolution and ligands?",
+      "categories": [
+        "Proteins & structures"
+      ],
+      "modalities": [
+        "Experimental structures",
+        "Macromolecular complexes",
+        "Chemical structures"
+      ],
+      "species": [
+        "Multiple species"
+      ],
+      "biological_scope": "Experimentally determined macromolecular structures across all organisms, often representing truncated constructs or stabilized conformations, with optional computed structure models badged separately on the RCSB portal.",
+      "granularity": [
+        "Structure",
+        "Molecular assembly",
+        "Atom"
+      ],
+      "resource_type": "primary",
+      "maintainer": "Worldwide Protein Data Bank; RCSB PDB provides the US portal",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.rcsb.org/",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.rcsb.org/docs/programmatic-access/web-apis-overview",
+          "note": "Search API and Data REST/GraphQL APIs."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.rcsb.org/docs/programmatic-access/file-download-services",
+          "note": "Archive downloads and coordinate/experimental files, including PDBx/mmCIF."
+        }
+      },
+      "licensing": {
+        "summary": "PDB archive: CC0 1.0; integrated external annotations can have separate terms.",
+        "source_url": "https://www.rcsb.org/pages/policies"
+      },
+      "not_for": "Deposited constructs frequently omit disordered regions or native modifications, biological assemblies may be computationally inferred from crystal packing rather than proven in vivo states, and portal searches can mix predicted models unless filtered.",
+      "sources": [
+        {
+          "url": "https://www.rcsb.org/pages/about-us/index",
+          "title": "About RCSB PDB",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "not_for",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.rcsb.org/docs/programmatic-access/file-download-services",
+          "title": "RCSB file download services",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "access",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.rcsb.org/docs/programmatic-access/web-apis-overview",
+          "title": "RCSB web APIs overview",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "key_data"
+          ]
+        },
+        {
+          "url": "https://www.rcsb.org/pages/policies",
+          "title": "RCSB policies",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "licensing"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "alphafold-db"
+      ],
+      "key_data": [
+        "Experimental coordinates: Atomic structures from X-ray crystallography, cryo-EM, and NMR, providing deposited asymmetric units and experimental or inferred biological assemblies.",
+        "Validation and experimental links: Standardized geometric validation reports, resolution metrics, structure factors, NMR restraints, and links to cryo-EM maps in EMDB.",
+        "Bound ligands and mapping: Co-resolved small molecules, ions, cofactors, and nucleic acids standardized via chemical dictionaries and mapped to UniProt residues."
+      ]
+    },
+    {
+      "id": "reactome",
+      "name": "Reactome",
+      "url": "https://reactome.org/",
+      "purpose": "Expert-curated, peer-reviewed knowledgebase modeling human biological processes as compartmentalized biochemical reaction networks, with orthology-based projections to other eukaryotes.",
+      "question": "Which mechanistic biochemical reactions, upstream regulators, or compartment-specific complexes connect hits from my screen, and is the pathway curated or orthology-inferred?",
+      "categories": [
+        "Pathways & interactions"
+      ],
+      "modalities": [
+        "Reaction networks",
+        "Pathway annotations",
+        "Drug-target annotations",
+        "Signaling interactions"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Mus musculus",
+        "Other eukaryotes"
+      ],
+      "biological_scope": "Manual curation centers on human normal and disease physiology across cellular compartments, with computational pathway projections to mouse and other model eukaryotes where orthologues exist.",
+      "granularity": [
+        "Reaction",
+        "Pathway",
+        "Molecule"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "Reactome project (OICR, NYU Langone Health, EMBL-EBI and OHSU)",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://reactome.org/",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://reactome.org/download-data",
+          "note": "Content and Analysis API documentation linked from official downloads page."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://reactome.org/download-data",
+          "note": "Database dumps, pathway exchange formats and identifier mappings."
+        }
+      },
+      "licensing": {
+        "summary": "Data: CC0; pathway illustrations and branding: CC BY 4.0; software has separate terms.",
+        "source_url": "https://reactome.org/license"
+      },
+      "not_for": "Represents static reaction topology rather than sample-specific pathway flux; non-human pathways are orthology projections from human templates and omit species-specific reactions lacking human counterparts.",
+      "sources": [
+        {
+          "url": "https://reactome.org/what-is-reactome",
+          "title": "What is Reactome?",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://reactome.org/documentation/inferred-events",
+          "title": "Computationally inferred events",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "biological_scope",
+            "key_data",
+            "not_for",
+            "purpose",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://reactome.org/download-data",
+          "title": "Download Reactome data",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access"
+          ]
+        },
+        {
+          "url": "https://reactome.org/license",
+          "title": "Reactome License Agreement",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "licensing"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "gene-ontology",
+        "omnipath"
+      ],
+      "key_data": [
+        "Biochemical reactions: Mechanistic pathway graphs linking molecular inputs, catalysts, positive or negative regulators, and outputs within defined subcellular compartments.",
+        "Disease and drug overlays: Curated models showing how pathogenic mutations, infectious agents, and chemical compounds perturb normal human reaction steps.",
+        "Orthology projections: Computationally inferred reaction networks for non-human eukaryotes projected from curated human pathways using protein orthology."
+      ]
+    },
+    {
+      "id": "scperturb",
+      "name": "scPerturb",
+      "url": "https://scperturb.org/",
+      "purpose": "Harmonizes published single-cell genetic, chemical, and cytokine perturbation studies into standardized count matrices with uniform perturbation metadata for cross-study benchmarking.",
+      "question": "Which published CRISPR, cytokine, or chemical single-cell perturbation datasets have harmonized matrices and matched controls to benchmark a perturbation-response model?",
+      "categories": [
+        "Perturbation & dependencies"
+      ],
+      "modalities": [
+        "Single-cell RNA-seq",
+        "Single-cell ATAC-seq",
+        "Genetic perturbations",
+        "Drug perturbations",
+        "Protein readouts"
+      ],
+      "species": [
+        "Homo sapiens",
+        "Mus musculus"
+      ],
+      "biological_scope": "Harmonized compilation of published human and mouse single-cell perturbation experiments spanning cancer cell lines, iPSC-derived neurons, immune cells, and primary or organoid models across genetic, drug, and cytokine interventions.",
+      "granularity": [
+        "Cell",
+        "Perturbation",
+        "Study"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "scPerturb authors; Sander Lab project hosting",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Inspected RNA record is version 1.0 and explicitly has a newer version; latest substantive dataset release was not established."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://scperturb.org/",
+          "note": "Browse official resource."
+        },
+        "api": {
+          "status": "unknown",
+          "url": null,
+          "note": "Not verified."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://github.com/sanderlab/scPerturb",
+          "note": "Repository links the current RNA and ATAC Zenodo collections; RNA/protein files use h5ad and the inspected ATAC deposit uses ZIP archives."
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Standardizes file schemas and metadata across independent publications rather than batch-correcting them into a single experiment; studies differ in guide multiplicity, assay chemistry, timepoints, and sequencing depth.",
+      "sources": [
+        {
+          "url": "https://projects.sanderlab.org/scperturb/",
+          "title": "scPerturb official resource",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://zenodo.org/records/7041849",
+          "title": "Author-deposited RNA and protein data",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "access",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://github.com/sanderlab/scPerturb",
+          "title": "scPerturb official repository",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "access",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://raw.githubusercontent.com/sanderlab/scPerturb/refs/heads/master/metadata/scperturb_dataset_info_140922.csv",
+          "title": "Author-maintained scPerturb study metadata snapshot",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "biological_scope",
+            "species",
+            "key_data",
+            "modalities"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "tahoe-100m",
+        "depmap",
+        "lincs-cmap"
+      ],
+      "key_data": [
+        "Harmonized matrices: Standardized single-cell count files from published Perturb-seq, CROP-seq, CRISPRi/a, ECCITE-seq, and Sci-Plex studies with uniform perturbation and control labels.",
+        "Multimodal readouts: Single-cell RNA-seq transcriptomes alongside surface protein abundances in ECCITE-seq studies and separate single-cell ATAC-seq chromatin accessibility datasets.",
+        "Benchmarking metadata and metrics: Study catalogs indexing perturbation class and guide multiplicity, paired with E-distance statistics quantifying multivariate perturbation effect sizes."
+      ]
+    },
+    {
+      "id": "sra",
+      "name": "Sequence Read Archive (SRA)",
+      "url": "https://www.ncbi.nlm.nih.gov/sra/",
+      "purpose": "Archives raw high-throughput sequencing reads and run-level metadata across all organisms, alongside secondary run-level gene and exon counts for human and mouse.",
+      "question": "Where can I download original raw sequencing reads and library metadata to reprocess a published sequencing study with my own pipeline?",
+      "categories": [
+        "Archives & standards"
+      ],
+      "modalities": [
+        "Sequencing reads",
+        "Sequence alignments",
+        "DNA sequencing",
+        "RNA-seq"
+      ],
+      "species": [
+        "All branches of life"
+      ],
+      "biological_scope": "Sequencing runs across all domains of life, metagenomes, and human cohorts, with identifiable human genetic or clinical data gated through controlled access.",
+      "granularity": [
+        "Sequencing run",
+        "Read",
+        "Biosample"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "NCBI, US National Library of Medicine; INSDC partners",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.ncbi.nlm.nih.gov/sra/",
+          "note": "Search and browse official records"
+        },
+        "api": {
+          "status": "unknown",
+          "url": null,
+          "note": "Not verified"
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.ncbi.nlm.nih.gov/sra/docs/sradownload/",
+          "note": "SRA Toolkit retrieves run lists; converts to FASTQ or SAM"
+        }
+      },
+      "licensing": {
+        "summary": "Public submissions are accessible; protected human datasets require dbGaP access. Dataset reuse terms were not fully audited.",
+        "source_url": "https://www.ncbi.nlm.nih.gov/sra/docs/"
+      },
+      "not_for": "Raw read archive requiring compute-intensive alignment or barcode demultiplexing; secondary run-level count tables do not provide cell-by-gene single-cell matrices, and sample perturbation labels are often unstructured.",
+      "sources": [
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/sra/docs/",
+          "title": "SRA introduction",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access.web",
+            "maintainer",
+            "licensing",
+            "not_for",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/sra/docs/sradownload/",
+          "title": "Downloading SRA data",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "access.bulk",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.ncbi.nlm.nih.gov/sra/docs/sra-rna-seq/",
+          "title": "SRA RNA-seq gene feature counts",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://ncbiinsights.ncbi.nlm.nih.gov/2026/10/15/rna-seq-gene-feature-counts/",
+          "title": "NCBI: introducing RNA-seq gene feature counts",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "modalities"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "geo"
+      ],
+      "key_data": [
+        "Raw sequencing data: Archived sequencing reads, base quality scores, and optional reference alignments across genomic, bulk, and single-cell libraries.",
+        "Experimental provenance: Hierarchical records linking overarching BioProjects and physical BioSamples to library preparation protocols and instrument sequencing runs.",
+        "Secondary RNA-seq counts: Cloud-hosted run-level gene and exon count tables for public human and mouse RNA-seq runs, without single-cell demultiplexing."
+      ]
+    },
+    {
+      "id": "string",
+      "name": "STRING",
+      "url": "https://string-db.org/",
+      "purpose": "Probabilistic protein association network integrating physical interaction assays, curated pathways, co-expression, literature mining, and genomic context into calibrated confidence scores across organisms.",
+      "question": "Do candidate genes from my perturbation or single-cell module form physical complexes or functional modules, and which evidence channels support each edge?",
+      "categories": [
+        "Pathways & interactions"
+      ],
+      "modalities": [
+        "Protein association networks",
+        "Protein interactions",
+        "Macromolecular complexes",
+        "Functional annotations"
+      ],
+      "species": [
+        "Multiple species"
+      ],
+      "biological_scope": "Proteome-wide networks across thousands of eukaryotic, prokaryotic, and viral organisms, integrating experimental interactomes, pathway databases, co-expression, and comparative genomic evidence.",
+      "granularity": [
+        "Protein",
+        "Protein pair"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "STRING Consortium",
+      "scale": {
+        "summary": "About 59.3 million proteins across 12,535 organisms in v12.5.",
+        "as_of": "2026-09-29",
+        "source_url": "https://www.string-db.org/cgi/access"
+      },
+      "release": {
+        "label": "12.5",
+        "date": "2026-09-29",
+        "source_url": "https://www.string-db.org/cgi/access",
+        "note": "Version-history start date for the current substantive network release."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://string-db.org/",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.string-db.org/cgi/access",
+          "note": "REST API documented; use bulk downloads for large networks."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.string-db.org/cgi/access",
+          "note": "Official access page links the bulk download service."
+        }
+      },
+      "licensing": {
+        "summary": "STRING data and outputs: CC BY 4.0; incorporated external material retains its provider\u2019s terms.",
+        "source_url": "https://www.string-db.org/cgi/access"
+      },
+      "not_for": "Functional association is not direct binding or causal direction. Even physical-network edges may mean shared complex membership; inspect evidence channels and organism-specific support.",
+      "sources": [
+        {
+          "url": "https://www.string-db.org/cgi/about",
+          "title": "About STRING",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "maintainer",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://en.string-db.org/help/getting_started/",
+          "title": "STRING getting started",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "access"
+          ]
+        },
+        {
+          "url": "https://string-db.org/help/database/",
+          "title": "STRING database documentation",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://www.string-db.org/cgi/access",
+          "title": "STRING access, versions and licensing",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access",
+            "release",
+            "scale",
+            "licensing",
+            "biological_scope"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "biogrid",
+        "complex-portal"
+      ],
+      "key_data": [
+        "Network modes: Selectable full functional association edges or physical subnetwork edges restricted to direct binding and shared complex membership.",
+        "Evidence channels: Seven separately scored channels\u2014experiments, databases, co-expression, text mining, neighborhood, fusion, and co-occurrence\u2014combined into a calibrated score.",
+        "Cross-species transfer: Orthology-transferred interaction scores distinguishing direct organism measurements from associations projected across hierarchical orthologous groups."
+      ]
+    },
+    {
+      "id": "tahoe-100m",
+      "name": "Tahoe-100M",
+      "url": "https://huggingface.co/datasets/tahoebio/Tahoe-100M",
+      "purpose": "Profiles single-cell transcriptional responses of 50 pooled human cancer cell lines across ~1,100 small-molecule drug-dose conditions and plate-matched controls using split-pool barcoding.",
+      "question": "How does a small-molecule drug at a given dose shift single-cell expression programs across 50 cancer cell lines in pooled wells?",
+      "categories": [
+        "Perturbation & dependencies",
+        "Disease & drug discovery"
+      ],
+      "modalities": [
+        "Single-cell RNA-seq",
+        "Drug perturbations",
+        "Functional genomics"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Fifty human cancer cell lines co-cultured in multiplexed cell villages and exposed to 379 small-molecule drugs across roughly 1,100 drug-dose conditions with plate-matched DMSO controls.",
+      "granularity": [
+        "Cell",
+        "Cell line",
+        "Drug-dose condition"
+      ],
+      "resource_type": "primary",
+      "maintainer": "Tahoe Therapeutics; Arc Institute distributes an additional data copy",
+      "scale": {
+        "summary": "Initial public release described about 100 million cells across 50 cancer cell lines; file representations and filtering differ.",
+        "as_of": "2025-02-25",
+        "source_url": "https://arcinstitute.org/news/arc-virtual-cell-atlas-launch"
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Initial public availability on 2025-02-25 is documented; latest substantive dataset revision is unknown. The 2026 paper date is not a data-release date."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://huggingface.co/datasets/tahoebio/Tahoe-100M",
+          "note": "Browse official resource."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://huggingface.co/datasets/tahoebio/Tahoe-100M",
+          "note": "Official card documents programmatic loading/streaming with the Hugging Face datasets library; this is file access, not a biological query REST API."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://huggingface.co/datasets/tahoebio/Tahoe-100M",
+          "note": "Parquet files via Hugging Face; Arc also distributes h5ad data, with its current Google Cloud copy subject to Requester Pays and Marketplace setup."
+        }
+      },
+      "licensing": {
+        "summary": "Official Hugging Face dataset card labels this distribution CC0-1.0; cloud transfer costs are separate from data licensing.",
+        "source_url": "https://huggingface.co/datasets/tahoebio/Tahoe-100M"
+      },
+      "not_for": "Perturbations are strictly small-molecule compounds applied to immortalized cancer cell lines in vitro; does not include genetic CRISPR knockouts or primary non-malignant human tissues.",
+      "sources": [
+        {
+          "url": "https://huggingface.co/datasets/tahoebio/Tahoe-100M",
+          "title": "Tahoe official dataset card",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "licensing",
+            "maintainer",
+            "question",
+            "modalities",
+            "not_for"
+          ]
+        },
+        {
+          "url": "https://arcinstitute.org/news/arc-virtual-cell-atlas-launch",
+          "title": "Arc public dataset launch",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "scale",
+            "release",
+            "biological_scope",
+            "key_data"
+          ]
+        },
+        {
+          "url": "https://github.com/ArcInstitute/arc-virtual-cell-atlas/blob/main/tahoe-100M/README.md",
+          "title": "Arc Tahoe access and metadata guide",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "key_data",
+            "access",
+            "scale",
+            "modalities",
+            "biological_scope"
+          ]
+        },
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42753697/",
+          "title": "Tahoe-100M primary research paper",
+          "type": "paper",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "biological_scope",
+            "species",
+            "scale",
+            "purpose",
+            "key_data",
+            "not_for"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "depmap",
+        "scperturb"
+      ],
+      "key_data": [
+        "Multiplexed scRNA-seq: Around 100 million split-pool single-cell transcriptomes from 50 cancer cell lines co-cultured in shared cell-village treatment wells.",
+        "Drug-dose matrix: Chemical perturbations spanning 379 small molecules tested across multiple concentrations alongside embedded same-plate DMSO vehicle controls.",
+        "Demultiplexed tables: Public cell-level and condition-level datasets providing demultiplexed cell-line identities, compound metadata, and quality-control flags."
+      ]
+    },
+    {
+      "id": "uniprot",
+      "name": "UniProt",
+      "url": "https://www.uniprot.org/",
+      "purpose": "Reference knowledgebase of protein sequences, splice isoforms, domain architectures, and functional annotations partitioned into expert-curated Swiss-Prot and computationally annotated TrEMBL records.",
+      "question": "What are the canonical and isoform sequences, residue-level domains, modification sites, and experimentally verified functions of a target protein from my screen?",
+      "categories": [
+        "Proteins & structures"
+      ],
+      "modalities": [
+        "Protein sequences",
+        "Functional annotations",
+        "Post-translational modifications"
+      ],
+      "species": [
+        "Multiple species"
+      ],
+      "biological_scope": "Proteins across all domains of life and viruses; manual Swiss-Prot curation is deepest for human, mouse, yeast, and model organisms, while TrEMBL spans broad genomic translations.",
+      "granularity": [
+        "Protein",
+        "Sequence feature"
+      ],
+      "resource_type": "aggregator",
+      "maintainer": "UniProt Consortium (EMBL-EBI, SIB and PIR)",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive data release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://www.uniprot.org/",
+          "note": "Official browser or resource landing page."
+        },
+        "api": {
+          "status": "yes",
+          "url": "https://www.ebi.ac.uk/training/online/courses/uniprot-exploring-protein-sequence-and-functional-info/getting-data-from-uniprot/accessing-uniprot-data-programmatically/",
+          "note": "Official guide to programmatic query and retrieval APIs."
+        },
+        "bulk": {
+          "status": "yes",
+          "url": "https://www.ebi.ac.uk/training/online/courses/uniprot-exploring-protein-sequence-and-functional-info/getting-data-from-uniprot/",
+          "note": "Complete datasets and downloadable search subsets."
+        }
+      },
+      "licensing": {
+        "summary": "CC BY 4.0 for copyrightable parts of the databases.",
+        "source_url": "https://www.uniprot.org/help/license"
+      },
+      "not_for": "Reviewed entries can contain inferred features; inspect evidence per annotation. Neither reviewed nor unreviewed records are sample-specific measurements of protein abundance.",
+      "sources": [
+        {
+          "url": "https://www.ebi.ac.uk/training/online/courses/uniprot-exploring-protein-sequence-and-functional-info/what-is-uniprot/",
+          "title": "What is UniProt?",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "access",
+            "question",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.ebi.ac.uk/training/online/courses/uniprot-exploring-protein-sequence-and-functional-info/what-is-uniprot/the-uniprot-databases/",
+          "title": "The UniProt databases",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "purpose",
+            "key_data",
+            "biological_scope",
+            "not_for",
+            "modalities"
+          ]
+        },
+        {
+          "url": "https://www.ebi.ac.uk/training/online/courses/uniprot-exploring-protein-sequence-and-functional-info/getting-data-from-uniprot/",
+          "title": "How to get data from UniProt",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access"
+          ]
+        },
+        {
+          "url": "https://www.ebi.ac.uk/training/online/courses/uniprot-exploring-protein-sequence-and-functional-info/getting-data-from-uniprot/accessing-uniprot-data-programmatically/",
+          "title": "Accessing UniProt data programmatically",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "access"
+          ]
+        },
+        {
+          "url": "https://www.uniprot.org/help/about",
+          "title": "About UniProt and the UniProt Consortium",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "maintainer"
+          ]
+        },
+        {
+          "url": "https://www.uniprot.org/help/license",
+          "title": "UniProt database licence",
+          "type": "official",
+          "checked_on": "2026-10-22",
+          "supports": [
+            "licensing"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "verified",
+        "checked_on": "2026-10-22",
+        "note": "Core fields checked against official sources. Scientific summaries enriched with gemini-4-argon-high and reviewed against source evidence, including indexed official documentation; use cases and limitations are editorial synthesis. Unknown metadata remains explicit."
+      },
+      "related": [
+        "pdb",
+        "alphafold-db",
+        "ensembl",
+        "gene-ontology"
+      ],
+      "key_data": [
+        "Curated Swiss-Prot: Expert-reviewed entries integrating canonical and splice-isoform sequences, experimentally supported functions, catalytic activities, subcellular locations, and disease variants.",
+        "Unreviewed TrEMBL: Computationally translated coding sequences annotated via automated rule systems prior to manual literature curation.",
+        "Positional features: Residue-level coordinates for signal peptides, transmembrane domains, active and binding sites, disulfide bonds, and post-translational modifications.",
+        "Proteome organization: Organism Reference Proteomes, identity-clustered UniRef sequence sets, and the UniParc historical sequence archive."
+      ]
+    }
+  ]
+};

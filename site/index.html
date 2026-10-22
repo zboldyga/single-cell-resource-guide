@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A curated field guide to datasets, atlases, and reference resources for single-cell, perturbation, and adjacent omics research.">
+  <meta name="color-scheme" content="light">
+  <title>Single-Cell Resource Guide</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./resources.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalog">Skip to resource table</a>
+  <main>
+    <header class="masthead">
+      <div class="brand"><div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25"><path d="M6 3c0 9 12 9 12 18M18 3c0 9-12 9-12 18M7 6h10M8 18h8M9 10h6M9 14h6"/></svg></div><div><p class="eyebrow">Single-cell · perturbation · adjacent omics</p><h1>Single-Cell <span>Resource Guide</span></h1></div></div>
+      <p class="edition" id="edition">A curated research reference</p>
+    </header>
+    <p class="introduction">Find the right resource. Compare what’s inside, when to use it, and where its limits are.</p>
+    <section class="controls" aria-label="Find resources">
+      <div class="search-line">
+        <label class="sr-only" for="search">Search the guide</label>
+        <div class="search-input-wrap"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg><input id="search" type="search" placeholder="Search resources, data types, tissues, or research questions…" autocomplete="off" spellcheck="false"></div>
+        <button id="clear-filters" class="quiet-button" type="button">Clear filters</button>
+      </div>
+      <div class="filter-line">
+        <details class="filter-group" id="category-filter"><summary>Categories <span id="category-selection">All</span></summary><fieldset id="categories"><legend class="sr-only">Categories: match any selected category</legend></fieldset></details>
+        <details class="filter-group" id="modality-filter"><summary>Data types <span id="modality-selection">All</span></summary><fieldset id="modalities"><legend class="sr-only">Data types: match any selected type</legend></fieldset></details>
+        <button id="compare-core" class="compare-button" type="button" aria-pressed="false">Compare GTEx · DepMap · CELLxGENE</button>
+        <p class="filter-hint">Any choice per group · both groups together</p>
+      </div>
+      <div id="selected-filters" class="selected-filters" aria-label="Selected filters" hidden></div>
+    </section>
+    <section id="catalog" tabindex="-1" aria-labelledby="catalog-heading">
+      <div class="table-toolbar"><h2 id="catalog-heading">Resource directory <span id="result-count" role="status" aria-live="polite" aria-atomic="true"></span></h2><p class="scroll-cue" id="scroll-cue">Scroll to compare columns <span aria-hidden="true">↔</span></p></div>
+      <div id="load-error" class="notice" role="alert" hidden></div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Resource comparison table" aria-describedby="scroll-cue">
+        <table id="resource-table">
+          <caption class="sr-only">Compare biology resources. Sort by name, resource type, or date checked. Expand access and details for metadata and source evidence.</caption>
+          <colgroup><col class="col-name"><col class="col-data"><col class="col-question"><col class="col-caveat"></colgroup>
+          <thead><tr>
+            <th scope="col" id="resource-heading" aria-sort="ascending"><span>Resource</span><div class="sort-controls" aria-label="Sort resources"><button type="button" data-sort="name" aria-pressed="true" aria-label="Sort by name, currently ascending">Name <span aria-hidden="true">↑</span></button><button type="button" data-sort="resource_type" aria-pressed="false" aria-label="Sort by resource type">Type</button><button type="button" data-sort="checked_on" aria-pressed="false" aria-label="Sort by date checked">Checked</button></div></th>
+            <th scope="col">Data &amp; design<span class="column-description">What it is and what’s inside</span></th>
+            <th scope="col">When to use<span class="column-description">Questions it can help answer</span></th>
+            <th scope="col">Keep in mind<span class="column-description">Scope and limitations</span></th>
+          </tr></thead>
+          <tbody id="resource-rows"></tbody>
+        </table>
+      </div>
+      <div id="empty-state" class="empty-state" hidden><h3>No resources match these filters.</h3><p>Try fewer terms or broaden a category or data type.</p><button id="reset-empty" class="primary-button" type="button">Reset the guide</button></div>
+    </section>
+    <footer><p>A curated starting point. Open <strong>Access &amp; details</strong> for sources, availability, and dated checks.</p><p id="catalog-totals"></p></footer>
+    <noscript><p class="notice">This guide needs JavaScript to display its local catalog. Enable JavaScript and reopen this page.</p></noscript>
+  </main>
+</body>
+</html>

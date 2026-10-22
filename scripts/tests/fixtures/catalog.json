@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "title": "Single-Cell Resource Guide",
+  "updated_at": "2026-10-21",
+  "resources": [
+    {
+      "id": "example",
+      "name": "Example resource (fixture)",
+      "url": "https://example.org",
+      "purpose": "Fixture only; never publish this entry.",
+      "question": "What question would this resource answer?",
+      "categories": [
+        "Expression & cell atlases"
+      ],
+      "modalities": [
+        "Bulk RNA-seq"
+      ],
+      "species": [
+        "Homo sapiens"
+      ],
+      "biological_scope": "Human tissues; use unknown when unverified.",
+      "granularity": [
+        "Tissue"
+      ],
+      "resource_type": "primary",
+      "maintainer": "unknown",
+      "scale": {
+        "summary": "unknown",
+        "as_of": null,
+        "source_url": null
+      },
+      "release": {
+        "label": "unknown",
+        "date": null,
+        "source_url": null,
+        "note": "Latest substantive release not verified."
+      },
+      "access": {
+        "web": {
+          "status": "yes",
+          "url": "https://example.org",
+          "note": "Browser access"
+        },
+        "api": {
+          "status": "unknown",
+          "url": null,
+          "note": "Not verified"
+        },
+        "bulk": {
+          "status": "unknown",
+          "url": null,
+          "note": "Not verified"
+        }
+      },
+      "licensing": {
+        "summary": "unknown",
+        "source_url": null
+      },
+      "not_for": "Not a scientific entry: contract example only.",
+      "sources": [
+        {
+          "url": "https://example.org",
+          "title": "Example only",
+          "type": "official",
+          "checked_on": "2026-10-21",
+          "supports": [
+            "purpose",
+            "biological_scope"
+          ]
+        }
+      ],
+      "verification": {
+        "status": "provisional",
+        "checked_on": null,
+        "note": "Fixture only, not verified"
+      },
+      "related": [],
+      "key_data": [
+        "Concrete biological measurements or annotations supplied by the resource"
+      ]
+    }
+  ]
+}
