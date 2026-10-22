@@ -1,5 +1,5 @@
 /* Local components and fonts; no external runtime requests. */
-:root{color-scheme:light;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:100%;line-height:1.55;color:#172033;background:#f8fafc;--surface:#fff;--ink:#172033;--muted:#526176;--line:#e2e8f0;--accent:#4338ca;--focus:#4f46e5}
+:root{color-scheme:light;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:max(18px,112.5%);line-height:1.55;color:#172033;background:#f8fafc;--surface:#fff;--ink:#172033;--muted:#526176;--line:#e2e8f0;--accent:#4338ca;--focus:#4f46e5}
 *{box-sizing:border-box}body{margin:0;font-size:1.125rem}main{width:100%;max-width:1760px;margin:0 auto;padding:32px 36px 22px}
 button,input,summary{font:inherit}button,summary{cursor:pointer}button{color:inherit;border:1px solid #cbd5e1;border-radius:7px;background:var(--surface)}button:hover{background:#f1f5f9}a{color:var(--accent);text-underline-offset:.2em}a:hover{text-decoration-thickness:2px}
 button:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:3px}[hidden]{display:none!important}
